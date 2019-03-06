@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/n/a#readme",
   "dependencies": {
-    "npm": "^6.8.0"
+    "html5-boilerplate": "^7.0.1",
+    "npm": "^6.8.0",
+    "requirejs": "^2.3.6"
   }
 }
