@@ -1,0 +1,22 @@
+{
+  "name": "mealprep",
+  "version": "1.0.0",
+  "description": "A meal planner and tracker to help prep a weekly dinner menu",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n/a.git"
+  },
+  "author": "Brian Pye @thebrianpye",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n/a/issues"
+  },
+  "homepage": "https://github.com/n/a#readme",
+  "dependencies": {
+    "npm": "^6.8.0"
+  }
+}
