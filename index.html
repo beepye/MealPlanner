@@ -13,6 +13,8 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <!-- http://getskeleton.com/ -->
+  <link rel="stylesheet" href="css/skeleton.css"> 
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -25,13 +27,13 @@
   <!-- Add your site or application content here -->
   
   <main>
-    <form method="post" name="new_meal" autocomplete="off" enctype="text/plain" novalidate>
+    <form id="CreateMeal" method="post" name="new_meal" autocomplete="off" enctype="text/plain" novalidate>
       <div>
-        <label>Meal Name</label>
+        <label>Meal name</label>
         <input type="text" name="meal_name" placeholder="Duck Confit" required>
       </div>
       <div>
-        <label>Meal Type<span>vegetarian, omnivorous, or carnivorous?</span></label>
+        <label>Meal type:<span>&nbsp;vegetarian, omnivorous?</span></label>
         <input type="text" name="meal_type" placeholder="Omnivorous" required>
       </div>
       <div>
