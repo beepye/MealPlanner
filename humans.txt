@@ -3,13 +3,13 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Brian Pye -- Designer & Developer -- @thebrianpye
 
 # THANKS
 
-    <name>
+    A big thanks to the Open Source community and the internet in general
 
 # TECHNOLOGY COLOPHON
 
-    CSS3, HTML5
+    CSS3, HTML5, Javascript
     Apache Server Configs, jQuery, Modernizr, Normalize.css
