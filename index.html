@@ -25,19 +25,19 @@
   <![endif]-->
 
   <main>
-    <form id="CreateMeal" method="post" name="new_meal" autocomplete="off" enctype="text/plain" novalidate>
+    <form id="CreateMeal" class="createMeal-form" method="post" name="create_meal" autocomplete="off" enctype="text/plain" novalidate>
       <div>
-        <label>Meal name</label>
+        <label for="meal_name">Meal name</label>
         <input type="text" name="meal_name" placeholder="Duck Confit" required>
       </div>
 
       <div>
-        <label>Meal type:<span>&nbsp;vegetarian, omnivorous?</span></label>
+        <label for="meal_type">Meal type:<span>&nbsp;vegetarian, omnivorous?</span></label>
         <input type="text" name="meal_type" placeholder="Omnivorous" required>
       </div>
 
       <div>
-        <button id="AddMealBtn" name="add_meal" value="primary" type="submit">Add Meal</button>
+        <button id="AddMealBtn" class="addMeal-btn" name="add_meal" value="primary" type="submit">Add Meal</button>
       </div>
     </form>
   </main>
@@ -48,7 +48,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
   <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+  <script src="dist/main.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <!-- <script>

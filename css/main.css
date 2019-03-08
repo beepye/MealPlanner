@@ -8,7 +8,9 @@ body {
 	background-color: #F2DB2E;
 }
 
-#CreateMeal {
+input::placeholder { color: #BBB; }
+
+.createMeal-form {
 	width: 50%;
 	max-width: 300px;
 	margin: 20vh auto;
@@ -19,9 +21,7 @@ body {
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
 
-input::placeholder { color: #BBB; }
-
-button[type="submit"] {
+.addMeal-btn {
 	margin-top: 10px;
 	background-color: #FFF18E;
 }

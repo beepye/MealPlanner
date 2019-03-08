@@ -2,9 +2,9 @@
   "name": "mealprep",
   "version": "0.1.0",
   "description": "A meal planner and tracker to help prep a weekly dinner menu",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": ""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -17,12 +17,13 @@
   },
   "homepage": "https://github.com/n/a#readme",
   "dependencies": {
-    "jquery": "^3.3.1",
     "modernizr": "^3.7.0",
     "npm": "^6.8.0",
     "requirejs": "^2.3.6"
   },
   "devDependencies": {
-    "gulp": "^4.0.0"
+    "gulp": "^4.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
   }
 }
