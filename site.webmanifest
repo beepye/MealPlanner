@@ -1,6 +1,6 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "MealPlan",
+  "name": "Meal Planner",
   "icons": [{
     "src": "icon.png",
     "type": "image/png",

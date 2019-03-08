@@ -24,35 +24,37 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-  <!-- Add your site or application content here -->
-  
   <main>
     <form id="CreateMeal" method="post" name="new_meal" autocomplete="off" enctype="text/plain" novalidate>
       <div>
         <label>Meal name</label>
         <input type="text" name="meal_name" placeholder="Duck Confit" required>
       </div>
+
       <div>
         <label>Meal type:<span>&nbsp;vegetarian, omnivorous?</span></label>
         <input type="text" name="meal_type" placeholder="Omnivorous" required>
       </div>
+
       <div>
         <button id="AddMealBtn" name="add_meal" value="primary" type="submit">Add Meal</button>
       </div>
     </form>
   </main>
-
-  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
+  
+  <!-- installed Modernizr w/ npm but not using yet -->
+  <script src="js/vendor/modernizr-3.6.0.min.js"></script> 
+  <!-- installed jQuery w/ npm but not using yet -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
+  <!-- <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
-  </script>
+  </script> -->
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 </body>
 
