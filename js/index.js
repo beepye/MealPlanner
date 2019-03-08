@@ -1,5 +1,7 @@
-var jQuery = require('jquery');
-
+// S.O. article about loading jQ w/ webpack:
+// https://stackoverflow.com/questions/28969861/managing-jquery-plugin-dependency-in-webpack
+// var $ = require('jquery');
+// var modernizr = require('modernizr');
 'use strict';
 
 /*  
@@ -30,8 +32,7 @@ document.addEventListener('click', function (event) {
 		meal_type = document.querySelector('input[name="meal_type"]').value;
 
 	if (event.target.matches('#AddMealBtn')) {
-		// console.log("Meal Name: " + meal_name);
-		// console.log("Meal Type: " + meal_type);
+		console.log("Meal Name: " + meal_name + '\n' + "Meal Type: " + meal_type);
 
 		// If the name & type both have values then proceed
 		if (!meal_type == "" && !meal_name == "") {
