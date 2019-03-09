@@ -17,44 +17,44 @@ On clicking the Add Meal button:
 	3. Populate the mealList array with the new meal object - DONE!
 */
 
-var mealList = [];
+// var mealList = [];
 
 // Meal object proto
 const Meal = function(meal_name, meal_type) {
 	this.meal_name = meal_name,
-	this.meal_type = meal_type;
+  this.meal_type = meal_type;
+	// this.meal_type = meal_type;
 }
 
 document.addEventListener('click', function (event) {
 
-	// !!! querySelectorAll returned undefined - not sure why but would like to find out
-	var meal_name = document.querySelector('input[name="meal_name"]').value,
-		meal_type = document.querySelector('input[name="meal_type"]').value;
+	if(event.target.matches('#AddMealBtn')) {
 
-	if (event.target.matches('#AddMealBtn')) {
-		console.log("Meal Name: " + meal_name + '\n' + "Meal Type: " + meal_type);
+    var meal_name = document.querySelector('input[name="meal_name"]').value,
+        meat_check = document.querySelector('input[name = "has_meat"]:checked');
 
 		// If the name & type both have values then proceed
-		if (!meal_type == "" && !meal_name == "") {
+    if(meat_check === null || meal_name == "") {
+      // alert the user inputs cannot be empty and bail
+      window.alert("Inputs cannot be blank");
+      console.log("blank input somewhere");
+      return;
+    } 
+    else {
+      // setting the var meal_type here because clicks outside the button were throwing errors - will address later
+      var meal_type = meat_check.value == "true" ? "meat-eater" : "vegetarian",
+          mealList = [],
+          newMeal = new  Meal(meal_name, meal_type);
 
-			var listLength = mealList.length,
-				newMeal = new  Meal(meal_name, meal_type);
+      console.log("Meal Name: " + meal_name + '\n' + "Meal Type: " + meal_type);
 
-			// Add meal to array
-			mealList.push(newMeal);
-		}
-		// alert the user inputs cannot be empty and bail
-		else { 
-			window.alert("Inputs cannot be blank");
-			return;
-		}
+      // Add meal to array
+      mealList.push(newMeal);
+      console.log(mealList);
+    }
 	}
-	// If it doesn't match do nothing
 	// I don't think I need this but will leave it for now
 	else { return; }
-
-	// Kill the default behavior
-	event.preventDefault();
 
 	// Log the clicked element in the console
 	console.log(event.target);

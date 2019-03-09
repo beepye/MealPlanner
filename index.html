@@ -32,8 +32,16 @@
       </div>
 
       <div>
-        <label for="meal_type">Meal type:<span>&nbsp;vegetarian, omnivorous?</span></label>
-        <input type="text" name="meal_type" placeholder="Omnivorous" required>
+        <p>Does it contain meat?</p>
+        <div>
+          <label for="YesMeat">Yes</label>
+          <input id="YesMeat" type="radio" name="has_meat" value="true" required>
+        </div>
+
+        <div>
+          <label for="NoMeat">No</label>
+          <input id="NoMeat" type="radio" name="has_meat" value="false" required>
+        </div>
       </div>
 
       <div>
