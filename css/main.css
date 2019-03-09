@@ -21,7 +21,23 @@ input::placeholder { color: #BBB; }
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
 
-.addMeal-btn {
-	margin-top: 10px;
-	background-color: #FFF18E;
+.createMeal-form p {
+  margin-bottom: .5rem;
+  font-weight: 600;
 }
+
+.input-block--text,
+.input-block--radio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.input-block--text label { margin-right: 20px; }
+
+.input-block--text input { margin-bottom: 0; }
+
+.input-block--radio div:first-of-type { margin-right: 40px; }
+
+.addMeal-btn { background-color: #FFF18E; }

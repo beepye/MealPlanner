@@ -26,13 +26,13 @@
 
   <main>
     <form id="CreateMeal" class="createMeal-form" method="post" name="create_meal" autocomplete="off" enctype="text/plain" novalidate>
-      <div>
+      <div class="input-block--text">
         <label for="meal_name">Meal name</label>
         <input type="text" name="meal_name" placeholder="Duck Confit" required>
       </div>
 
-      <div>
-        <p>Does it contain meat?</p>
+      <p>Does it contain meat?</p>
+      <div class="input-block--radio">
         <div>
           <label for="YesMeat">Yes</label>
           <input id="YesMeat" type="radio" name="has_meat" value="true" required>
