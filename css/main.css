@@ -22,7 +22,7 @@ input::placeholder { color: #BBB; }
 }
 
 .createMeal-form p {
-  margin-bottom: .5rem;
+  margin-bottom: 5px;
   font-weight: 600;
 }
 
