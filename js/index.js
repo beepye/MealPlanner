@@ -9,7 +9,7 @@ On clicking the Add Meal button:
 	1. Grab the value of each input and assign to a variable - DONE!
 	2. Use those input values to create a new meal object
 		a. Do both inputs have a value? - DONE!
-			i. Yes: proceed with adding the meal
+			i. Yes: proceed with adding the meal 
 			ii. No: alert user and bail
 		b. Does the item name already exist?
 			i. Yes: do not validate, prompt user to change name
@@ -17,7 +17,8 @@ On clicking the Add Meal button:
 	3. Populate the mealList array with the new meal object - DONE!
 */
 
-// var mealList = [];
+// Soon this will grab and existing list of meals - not sure how to have it persist yet... json? db? idk..
+var mealList = [];
 
 // Meal object proto
 const Meal = function(meal_name, meal_type) {
@@ -30,6 +31,8 @@ document.addEventListener('click', function (event) {
 
 	if(event.target.matches('#AddMealBtn')) {
 
+    event.preventDefault();
+
     var meal_name = document.querySelector('input[name="meal_name"]').value,
         meat_check = document.querySelector('input[name = "has_meat"]:checked');
 
@@ -37,26 +40,19 @@ document.addEventListener('click', function (event) {
     if(meat_check === null || meal_name == "") {
       // alert the user inputs cannot be empty and bail
       window.alert("Inputs cannot be blank");
-      console.log("blank input somewhere");
       return;
     } 
     else {
       // setting the var meal_type here because clicks outside the button were throwing errors - will address later
       var meal_type = meat_check.value == "true" ? "meat-eater" : "vegetarian",
-          mealList = [],
           newMeal = new  Meal(meal_name, meal_type);
 
-      console.log("Meal Name: " + meal_name + '\n' + "Meal Type: " + meal_type);
+      // console.log("Meal Name: " + meal_name + '\n' + "Meal Type: " + meal_type);
 
-      // Add meal to array
+      // Add new meal to the list
       mealList.push(newMeal);
-      console.log(mealList);
     }
+    return mealList;
 	}
-	// I don't think I need this but will leave it for now
 	else { return; }
-
-	// Log the clicked element in the console
-	console.log(event.target);
-
 }, false);
