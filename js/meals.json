@@ -1,0 +1,6 @@
+let meals = [
+  {
+    "name": "Beef Chili",
+    "has_meat": 5
+  }
+];

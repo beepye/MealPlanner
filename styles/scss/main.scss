@@ -1,20 +1,22 @@
-/* 
-	The styles will eventually be converted to SASS 
-	- px will be converted to rem
-	- vars will be set for colors, fonts, etc
-  - would like to experiment with CSS Grid for layout
-*/
+/* would like to experiment with CSS Grid for layout */
+
+/* All vars prefix with "mp-" */
+$mp-brown:        #4D3319;
+$mp-pale-yellow:  #FFE680;
+$mp-yellow:       #FFCC00;
+$mp-box-shadow:   0 0 20px rgba(0, 0, 0, 0.3);
+
 body {
 	box-sizing: border-box;
-	background-color: #ffcc00;
-  color: #4d3319;
+	background-color: $mp-yellow;
+  color: $mp-brown;
 }
 
 header {
-  padding: 20px 40px;
-  border-bottom: 2px solid #4d3319;
-  background-color: #FFE680;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  padding: 2rem 4rem;
+  border-bottom: 2px solid $mp-brown;
+  background-color: $mp-pale-yellow;
+  box-shadow: $mp-box-shadow;
 }
 
 h1 {
@@ -24,24 +26,26 @@ h1 {
   font-weight: 600;
 }
 
-input { margin-bottom: 20px; }
-
-input::placeholder { color: #BBB; }
+input { 
+  margin-bottom: 2rem; 
+  
+  &::placeholder { color: #BBB; }
+}
 
 .createMeal-form {
 	width: 50%;
-	max-width: 300px;
+	max-width: 30rem;
 	margin: 10vh auto;
-	border: 1px solid #FFE680;
+	border: 1px solid $mp-pale-yellow;
 	border-radius: 4px;
-	padding: 30px;
+	padding: 3rem;
 	background-color: #FFF;
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-}
+	box-shadow: $mp-box-shadow;
 
-.createMeal-form p {
-  margin-bottom: 5px;
-  font-weight: 600;
+  p {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
 }
 
 .input-block--text,
@@ -49,20 +53,21 @@ input::placeholder { color: #BBB; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 .input-block--radio {
   border-bottom: 1px solid #D1D1D1;
+
+  div:first-of-type { margin-right: 4rem; }
 }
 
-.input-block--text label { margin-right: 20px; }
-
-.input-block--text input { margin-bottom: 0; }
-
-.input-block--radio div:first-of-type { margin-right: 40px; }
+.input-block--text {
+  label { margin-right: 2rem; }
+  input { margin-bottom: 0; }
+}
 
 .addMeal-btn { 
   margin-bottom: 0;
-  background-color: #FFE680; 
+  background-color: $mp-pale-yellow; 
 }
