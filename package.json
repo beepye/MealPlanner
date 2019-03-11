@@ -3,29 +3,37 @@
   "version": "0.1.0",
   "description": "A meal planner and tracker to help prep a weekly dinner menu",
   "main": "index.js",
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress --mode=production",
-    "watch": "webpack --progress --watch"
+    "watch": "webpack --progress --watch",
+    "server": "webpack-dev-server --open",
+    "scss": "node-sass --watch styles/scss/*.scss -o styles/"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/n/a.git"
   },
+
   "author": "Brian Pye",
   "twitter": "@thebrianpye",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/beepye/MealPlanner"
   },
+
   "homepage": "https://github.com/beepye/MealPlanner/a#readme",
   "dependencies": {
     "modernizr": "^3.7.0",
     "npm": "^6.8.0",
     "requirejs": "^2.3.6"
   },
+  
   "devDependencies": {
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
   }
 }

@@ -1,0 +1,65 @@
+/* 
+	The styles will eventually be converted to SASS 
+	- px will be converted to rem
+	- vars will be set for colors, fonts, etc
+  - would like to experiment with CSS Grid for layout
+*/
+body {
+  box-sizing: border-box;
+  background-color: #ffcc00;
+  color: #4d3319; }
+
+header {
+  padding: 20px 40px;
+  border-bottom: 2px solid #4d3319;
+  background-color: #FFE680;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); }
+
+h1 {
+  margin-bottom: 0;
+  font-size: 2rem;
+  letter-spacing: 0;
+  font-weight: 600; }
+
+input {
+  margin-bottom: 20px; }
+
+input::placeholder {
+  color: #BBB; }
+
+.createMeal-form {
+  width: 50%;
+  max-width: 300px;
+  margin: 10vh auto;
+  border: 1px solid #FFE680;
+  border-radius: 4px;
+  padding: 30px;
+  background-color: #FFF;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); }
+
+.createMeal-form p {
+  margin-bottom: 5px;
+  font-weight: 600; }
+
+.input-block--text,
+.input-block--radio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px; }
+
+.input-block--radio {
+  border-bottom: 1px solid #D1D1D1; }
+
+.input-block--text label {
+  margin-right: 20px; }
+
+.input-block--text input {
+  margin-bottom: 0; }
+
+.input-block--radio div:first-of-type {
+  margin-right: 40px; }
+
+.addMeal-btn {
+  margin-bottom: 0;
+  background-color: #FFE680; }
