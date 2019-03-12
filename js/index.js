@@ -1,9 +1,4 @@
-// S.O. article about loading jQ w/ webpack:
-// https://stackoverflow.com/questions/28969861/managing-jquery-plugin-dependency-in-webpack
-// var $ = require('jquery');
-// var modernizr = require('modernizr');
 'use strict';
-
 /*  
 On clicking the Add Meal button:
 	1. Grab the value of each input and assign to a variable - DONE!
@@ -17,42 +12,78 @@ On clicking the Add Meal button:
 	3. Populate the mealList array with the new meal object - DONE!
 */
 
-// Soon this will grab and existing list of meals - not sure how to have it persist yet... json? db? idk..
-var mealList = [];
+// Meal object - should this be const, var, or let?
+const MEAL = function(mealName, mealType) {
+              	this.mealName = mealName,
+                this.mealType = mealType;
+              };
 
-// Meal object proto
-const Meal = function(meal_name, meal_type) {
-	this.meal_name = meal_name,
-  this.meal_type = meal_type;
-	// this.meal_type = meal_type;
-}
+const MEALFORM = document.getElementById('MealForm');
 
+let MealList = [];
+    
 document.addEventListener('click', function (event) {
 
 	if(event.target.matches('#AddMealBtn')) {
-
+    // Killing submit button for now
     event.preventDefault();
 
-    var meal_name = document.querySelector('input[name="meal_name"]').value,
-        meat_check = document.querySelector('input[name = "has_meat"]:checked');
+    let mealName = document.querySelector('input[name="meal_name"]').value,
+        meatCheck = document.querySelector('input[name = "has_meat"]:checked');
 
-		// If the name & type both have values then proceed
-    if(meat_check === null || meal_name == "") {
-      // alert the user inputs cannot be empty and bail
-      window.alert("Inputs cannot be blank");
+    if(meatCheck !== null && mealName !== "") {
+
+      let mealType = meatCheck.value == 'true' ? 'meat-eater' : 'vegetarian',
+          newMeal = new  MEAL(mealName, mealType);
+
+      console.log(`Meal Name: ${mealName}\nMeal Type: ${mealType}`);
+
+      MealList.push(newMeal);
+    
+      createHtmlBlock(MealList);
+
+      return MealList;
+
+    } else {
+      // alert the user and bail
+      window.alert('Inputs cannot be blank');
       return;
-    } 
-    else {
-      // setting the var meal_type here because clicks outside the button were throwing errors - will address later
-      var meal_type = meat_check.value == "true" ? "meat-eater" : "vegetarian",
-          newMeal = new  Meal(meal_name, meal_type);
-
-      // console.log("Meal Name: " + meal_name + '\n' + "Meal Type: " + meal_type);
-
-      // Add new meal to the list
-      mealList.push(newMeal);
     }
-    return mealList;
 	}
-	else { return; }
 }, false);
+
+var createHtmlBlock = function makeHtml(listArray) {
+
+  var divElem = document.createElement('div'),
+      meatList = document.createElement('ul'), 
+      vegList = document.createElement('ul'), 
+      listItem = document.createElement('li'),
+      appendBlock = document.querySelector('main');
+
+  // Create classes for js hooks
+  meatList.className = "js-meatList";
+  vegList.className = "js-vegList";
+  // Build container & list html then append to the main elem
+  divElem.appendChild(meatList);
+  divElem.appendChild(vegList);
+  appendBlock.appendChild(divElem);
+
+  // Build html list
+  listArray.forEach(function(item) {
+    // Set the name 
+    listItem.innerHTML = item.mealName; 
+    // Add to appropriate list
+    switch(item.mealType) {
+      case 'meat-eater':
+        console.log(' it\'s a bloodlusting carnivor!');
+        meatList.appendChild(listItem);
+        break;
+      case 'vegetarian':
+        console.log(' it\'s a hippy-dippy veg head!');
+        vegList.appendChild(listItem);
+        break;
+    }
+  })
+};
+
+// createHtmlBlock(MealList);

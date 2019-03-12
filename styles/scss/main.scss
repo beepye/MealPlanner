@@ -1,9 +1,12 @@
-/* would like to experiment with CSS Grid for layout */
+/* Planning to experiment with CSS Grid for layout */
 
-/* All vars prefix with "mp-" */
+// All vars prefix with "mp-"
 $mp-brown:        #4D3319;
 $mp-pale-yellow:  #FFE680;
 $mp-yellow:       #FFCC00;
+$mp-black:        #211C09;
+
+// should use a mixin or a function to adjust opacity here
 $mp-box-shadow:   0 0 20px rgba(0, 0, 0, 0.3);
 
 body {
@@ -32,7 +35,7 @@ input {
   &::placeholder { color: #BBB; }
 }
 
-.createMeal-form {
+.meal-form {
 	width: 50%;
 	max-width: 30rem;
 	margin: 10vh auto;
@@ -67,7 +70,7 @@ input {
   input { margin-bottom: 0; }
 }
 
-.addMeal-btn { 
+.primary-btn { 
   margin-bottom: 0;
   background-color: $mp-pale-yellow; 
 }
