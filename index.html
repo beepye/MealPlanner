@@ -4,15 +4,12 @@
 <head>
   <meta charset="utf-8">
   <title>Meal Plan Prepper</title>
-  <meta name="description" content="">
+  <meta name="description" content="Add meals to a list and generate a random weekly menu">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
   <link rel="stylesheet" href="styles/normalize.css">
-  <!-- http://getskeleton.com/ -->
   <link rel="stylesheet" href="styles/skeleton.css"> 
   <link rel="stylesheet" href="styles/main.css">
 
@@ -28,7 +25,7 @@
   </header>
 
   <main>
-    <form id="CreateMeal" class="createMeal-form" method="post" name="create_meal" autocomplete="off" enctype="text/plain" novalidate>
+    <form id="CreateMeal" class="meal-form" method="post" name="create_meal" autocomplete="off" enctype="text/plain" novalidate>
       <div class="input-block--text">
         <label for="meal_name">Meal name</label>
         <input type="text" name="meal_name" placeholder="Duck Confit" required>
@@ -48,7 +45,7 @@
       </div>
 
       <div>
-        <button id="AddMealBtn" class="addMeal-btn" name="add_meal" value="primary" type="submit">Add Meal</button>
+        <button id="AddMealBtn" class="primary-btn" name="add_meal" value="primary" type="submit">Add Meal</button>
       </div>
     </form>
   </main>

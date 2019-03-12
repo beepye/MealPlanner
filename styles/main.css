@@ -1,5 +1,4 @@
-/* would like to experiment with CSS Grid for layout */
-/* All vars prefix with "mp-" */
+/* Planning to experiment with CSS Grid for layout */
 body {
   box-sizing: border-box;
   background-color: #FFCC00;
@@ -22,7 +21,7 @@ input {
   input::placeholder {
     color: #BBB; }
 
-.createMeal-form {
+.meal-form {
   width: 50%;
   max-width: 30rem;
   margin: 10vh auto;
@@ -31,7 +30,7 @@ input {
   padding: 3rem;
   background-color: #FFF;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
-  .createMeal-form p {
+  .meal-form p {
     margin-bottom: 0.5rem;
     font-weight: 600; }
 
@@ -53,6 +52,6 @@ input {
 .input-block--text input {
   margin-bottom: 0; }
 
-.addMeal-btn {
+.primary-btn {
   margin-bottom: 0;
   background-color: #FFE680; }
