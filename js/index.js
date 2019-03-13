@@ -64,27 +64,25 @@ var doesMealExist = function checkForMatch(array, name) {
 // Build html container + lists
 var createHtmlBlock = function makeHtml() {
 
-  let divElem = document.createElement('div'),
-      meatList = document.createElement('ul'), 
+  let meatList = document.createElement('ul'), 
       vegList = document.createElement('ul'), 
-      appendBlock = document.querySelector('main');
+      appendBlock = document.querySelectorAll('.content-container')[1];
 
   // Create classes for js hooks
-  divElem.className = 'js-container list-container'
-  meatList.className = 'js-meatList meatlist';
-  vegList.className = 'js-vegList veglist';
+  appendBlock.className += ' js-container'
+  meatList.className = 'js-meatList list';
+  vegList.className = 'js-vegList list';
   // Build container + list html then append to the main elem
-  divElem.appendChild(meatList);
-  divElem.appendChild(vegList);
-  appendBlock.appendChild(divElem);
+  appendBlock.appendChild(meatList);
+  appendBlock.appendChild(vegList);
 }
 
 // Populate lists with MealList data
 var populateMealLists = function thing(listArray) {
 
-  let divElem = document.querySelector('.js-container');
+  let sectionElem = document.querySelector('.js-container');
   // Do the lists already exist?
-  if(!divElem) {
+  if(!sectionElem) {
     createHtmlBlock();
   }
 

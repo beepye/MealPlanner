@@ -649,8 +649,10 @@ there.
 /* Larger than tablet */
 /* Larger than desktop */
 /* Larger than Desktop HD */
+* {
+  box-sizing: border-box; }
+
 body {
-  box-sizing: border-box;
   background-color: #FFCC00;
   color: #4D3319; }
 
@@ -665,10 +667,15 @@ h1 {
   letter-spacing: 0;
   font-weight: 600; }
 
+.content-container {
+  width: 100%;
+  padding: 4rem 4rem 0;
+  display: flex;
+  justify-content: center; }
+
 .meal-form {
-  width: 50%;
-  max-width: 30rem;
-  margin: 10vh auto;
+  width: 100%;
+  max-width: 40rem;
   border: 1px solid #FFE680;
   padding: 3rem;
   background-color: #FCFBF7;
@@ -703,18 +710,16 @@ h1 {
     .input-block.radio-input div:nth-of-type(odd) {
       margin-right: 4rem; }
 
-.list-container {
-  display: flex;
-  justify-content: space-evenly; }
-  .list-container ul {
-    padding: 3rem;
-    list-style: none;
-    background-color: #FCFBF7;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
-  .list-container a {
+.list {
+  width: 50%;
+  padding: 3rem;
+  list-style: none;
+  background-color: #FCFBF7;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+  .list a {
     cursor: pointer;
     color: #211C09; }
-    .list-container a:hover {
+    .list a:hover {
       color: #4D3319;
       text-decoration: underline; }
 
