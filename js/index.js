@@ -1,20 +1,8 @@
 'use strict';
-/*  
-On clicking the Add Meal button:
-	1. Grab the value of each input and assign to a variable - DONE!
-	2. Use those input values to create a new meal object
-		a. Do both inputs have a value? - DONE!
-			i. Yes: proceed with adding the meal 
-			ii. No: alert user and bail
-		b. Does the item name already exist?
-			i. Yes: do not validate, prompt user to change name
-			ii. No: then create the meal obj
-	3. Populate the mealList array with the new meal object - DONE!
-*/
 
 // Meal object - should this be const, var, or let?
 const MEAL = function(mealName, mealType) {
-              	this.mealName = mealName,
+                this.mealName = mealName,
                 this.mealType = mealType;
               };
 
@@ -24,7 +12,7 @@ let MealList = [];
     
 document.addEventListener('click', function (event) {
 
-	if(event.target.matches('#AddMealBtn')) {
+  if(event.target.matches('#AddMealBtn')) {
     // Killing submit button for now
     event.preventDefault();
 
@@ -33,14 +21,20 @@ document.addEventListener('click', function (event) {
 
     if(meatCheck !== null && mealName !== "") {
 
+      // Need a check to see if the meal already exists:
+      //  true: alert user to change name
+      //  else: create the meal obj
+
       let mealType = meatCheck.value == 'true' ? 'meat-eater' : 'vegetarian',
           newMeal = new  MEAL(mealName, mealType);
 
       console.log(`Meal Name: ${mealName}\nMeal Type: ${mealType}`);
 
       MealList.push(newMeal);
-    
-      createHtmlBlock(MealList);
+      // Add meals to appropriate lists
+      populateMealLists(MealList);
+      // Reset form
+      MEALFORM.reset();
 
       return MealList;
 
@@ -49,41 +43,60 @@ document.addEventListener('click', function (event) {
       window.alert('Inputs cannot be blank');
       return;
     }
-	}
+  }
 }, false);
 
-var createHtmlBlock = function makeHtml(listArray) {
+// Build html container + lists
+var createHtmlBlock = function makeHtml() {
 
-  var divElem = document.createElement('div'),
+  let divElem = document.createElement('div'),
       meatList = document.createElement('ul'), 
       vegList = document.createElement('ul'), 
-      listItem = document.createElement('li'),
       appendBlock = document.querySelector('main');
 
   // Create classes for js hooks
-  meatList.className = "js-meatList";
-  vegList.className = "js-vegList";
-  // Build container & list html then append to the main elem
+  divElem.className = 'js-container'
+  meatList.className = 'js-meatList';
+  vegList.className = 'js-vegList';
+  // Build container + list html then append to the main elem
   divElem.appendChild(meatList);
   divElem.appendChild(vegList);
   appendBlock.appendChild(divElem);
+}
+
+// Populate lists with MealList data
+var populateMealLists = function thing(listArray) {
+
+  let divElem = document.querySelector('.js-container');
+  // Do the lists already exist?
+  if(!divElem) {
+    createHtmlBlock();
+  }
+
+  let meatList = document.querySelector('.js-meatList'),
+      vegList = document.querySelector('.js-vegList');
 
   // Build html list
   listArray.forEach(function(item) {
-    // Set the name 
-    listItem.innerHTML = item.mealName; 
+    // Create list elem
+    let listItem = document.createElement('li'),
+        linkTag = document.createElement('a');
+
+    listItem.appendChild(linkTag);
+    // Inject the meal name 
+    linkTag.innerHTML = item.mealName; 
     // Add to appropriate list
     switch(item.mealType) {
       case 'meat-eater':
-        console.log(' it\'s a bloodlusting carnivor!');
         meatList.appendChild(listItem);
         break;
       case 'vegetarian':
-        console.log(' it\'s a hippy-dippy veg head!');
         vegList.appendChild(listItem);
         break;
     }
   })
 };
 
-// createHtmlBlock(MealList);
+var doesMealExist = function checkForMatch() {
+  // cycle through array to see if there's a match
+}

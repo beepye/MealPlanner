@@ -17,7 +17,6 @@ body {
 
 header {
   padding: 2rem 4rem;
-  border-bottom: 2px solid $mp-brown;
   background-color: $mp-pale-yellow;
   box-shadow: $mp-box-shadow;
 }
@@ -29,45 +28,57 @@ h1 {
   font-weight: 600;
 }
 
-input { 
-  margin-bottom: 2rem; 
-  
-  &::placeholder { color: #BBB; }
-}
-
 .meal-form {
 	width: 50%;
 	max-width: 30rem;
 	margin: 10vh auto;
 	border: 1px solid $mp-pale-yellow;
-	border-radius: 4px;
 	padding: 3rem;
 	background-color: #FFF;
 	box-shadow: $mp-box-shadow;
 
   p {
     margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 
-.input-block--text,
-.input-block--radio {
+.input-block {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 2rem;
-}
+  margin-bottom: 3rem;
 
-.input-block--radio {
-  border-bottom: 1px solid #D1D1D1;
+  input { 
+    margin-bottom: 0.5rem; 
 
-  div:first-of-type { margin-right: 4rem; }
-}
+    &::placeholder { color: #BBB; }
+  }
 
-.input-block--text {
-  label { margin-right: 2rem; }
-  input { margin-bottom: 0; }
+  &.text-input {
+    label { 
+      margin-right: 2rem; 
+      font-weight: 500;
+    }
+
+    input { 
+      width: 100%;
+      margin-bottom: 0; 
+    }
+  }
+
+  &.radio-input {
+    border-bottom: 1px solid #D1D1D1;
+
+    label { margin: 0 2rem 0 0; }
+    div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    div:nth-of-type(odd) { margin-right: 4rem; }
+  }
 }
 
 .primary-btn { 

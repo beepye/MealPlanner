@@ -6,7 +6,6 @@ body {
 
 header {
   padding: 2rem 4rem;
-  border-bottom: 2px solid #4D3319;
   background-color: #FFE680;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
 
@@ -16,41 +15,43 @@ h1 {
   letter-spacing: 0;
   font-weight: 600; }
 
-input {
-  margin-bottom: 2rem; }
-  input::placeholder {
-    color: #BBB; }
-
 .meal-form {
   width: 50%;
   max-width: 30rem;
   margin: 10vh auto;
   border: 1px solid #FFE680;
-  border-radius: 4px;
   padding: 3rem;
   background-color: #FFF;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
   .meal-form p {
     margin-bottom: 0.5rem;
-    font-weight: 600; }
+    font-weight: 500; }
 
-.input-block--text,
-.input-block--radio {
+.input-block {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 2rem; }
-
-.input-block--radio {
-  border-bottom: 1px solid #D1D1D1; }
-  .input-block--radio div:first-of-type {
-    margin-right: 4rem; }
-
-.input-block--text label {
-  margin-right: 2rem; }
-
-.input-block--text input {
-  margin-bottom: 0; }
+  margin-bottom: 3rem; }
+  .input-block input {
+    margin-bottom: 0.5rem; }
+    .input-block input::placeholder {
+      color: #BBB; }
+  .input-block.text-input label {
+    margin-right: 2rem;
+    font-weight: 500; }
+  .input-block.text-input input {
+    width: 100%;
+    margin-bottom: 0; }
+  .input-block.radio-input {
+    border-bottom: 1px solid #D1D1D1; }
+    .input-block.radio-input label {
+      margin: 0 2rem 0 0; }
+    .input-block.radio-input div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 3rem; }
+    .input-block.radio-input div:nth-of-type(odd) {
+      margin-right: 4rem; }
 
 .primary-btn {
   margin-bottom: 0;
