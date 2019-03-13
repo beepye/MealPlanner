@@ -70,9 +70,9 @@ var createHtmlBlock = function makeHtml() {
       appendBlock = document.querySelector('main');
 
   // Create classes for js hooks
-  divElem.className = 'js-container'
-  meatList.className = 'js-meatList';
-  vegList.className = 'js-vegList';
+  divElem.className = 'js-container list-container'
+  meatList.className = 'js-meatList meatlist';
+  vegList.className = 'js-vegList veglist';
   // Build container + list html then append to the main elem
   divElem.appendChild(meatList);
   divElem.appendChild(vegList);

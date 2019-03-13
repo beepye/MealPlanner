@@ -1,10 +1,8 @@
 /* Planning to experiment with CSS Grid for layout */
 
-// All vars prefix with "mp-"
-$mp-brown:        #4D3319;
-$mp-pale-yellow:  #FFE680;
-$mp-yellow:       #FFCC00;
-$mp-black:        #211C09;
+@import 'normalize';
+@import 'skeleton';
+@import 'partials/vars';
 
 // should use a mixin or a function to adjust opacity here
 $mp-box-shadow:   0 0 20px rgba(0, 0, 0, 0.3);
@@ -34,7 +32,7 @@ h1 {
 	margin: 10vh auto;
 	border: 1px solid $mp-pale-yellow;
 	padding: 3rem;
-	background-color: #FFF;
+	background-color: $mp-white;
 	box-shadow: $mp-box-shadow;
 
   p {
@@ -78,6 +76,28 @@ h1 {
     }
 
     div:nth-of-type(odd) { margin-right: 4rem; }
+  }
+}
+
+.list-container {
+  display: flex;
+  justify-content: space-evenly;
+
+  ul {
+    padding: 3rem;
+    list-style: none;
+    background-color: $mp-white;
+    box-shadow: $mp-box-shadow;
+  }
+
+  a {
+    cursor: pointer;
+    color: $mp-black;
+
+    &:hover { 
+      color: $mp-brown; 
+      text-decoration: underline;
+    }
   }
 }
 
