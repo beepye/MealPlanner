@@ -7,7 +7,7 @@ const MEAL = function(mealName, mealType) {
 
 const MEALFORM = document.getElementById('MealForm');
 
-let MealList = [];
+var MealList = [];
     
 document.addEventListener('click', function (event) {
 
@@ -24,20 +24,18 @@ document.addEventListener('click', function (event) {
         alert(`${mealName} already exists!`); 
         return; 
       }
-      // If not then add it to the MealList array
+      // If not add it to the MealList array 
       else {
         let mealType = meatCheck.value == 'true' ? 'meat-eater' : 'vegetarian',
             newMeal = new  MEAL(mealName, mealType);
 
         console.log(`Meal Name: ${mealName}\nMeal Type: ${mealType}`);
-
+        // Add new meal to the list
         MealList.push(newMeal);
-        // Create html and add meals to appropriate <ul>
+        // Create html and inject new list item
         populateMealLists(MealList);
         // Reset form
         MEALFORM.reset();
-
-        return MealList;
       }
     } 
     else {
@@ -83,9 +81,7 @@ var populateMealLists = function thing(listArray) {
 
   let sectionElem = document.querySelector('.js-container');
   // Do the lists already exist?
-  if(!sectionElem) {
-    createHtmlBlock();
-  }
+  if(!sectionElem) { createHtmlBlock(); }
 
   let meatList = document.querySelector('.js-meatList'),
       vegList = document.querySelector('.js-vegList');
