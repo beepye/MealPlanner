@@ -19,27 +19,28 @@ document.addEventListener('click', function (event) {
         meatCheck = document.querySelector('input[name = "has_meat"]:checked');
 
     if(meatCheck !== null && mealName !== "") {
-      
       // Does item name already exist?
-      // var match = doesMealExist(MealList, mealName);
       if(doesMealExist(MealList, mealName)) { 
-      console.log('there\'s a match baby!');}
+        alert(`${mealName} already exists!`); 
+        return; 
+      }
+      // If not then add it to the MealList array
+      else {
+        let mealType = meatCheck.value == 'true' ? 'meat-eater' : 'vegetarian',
+            newMeal = new  MEAL(mealName, mealType);
 
-      let mealType = meatCheck.value == 'true' ? 'meat-eater' : 'vegetarian',
-          newMeal = new  MEAL(mealName, mealType);
+        console.log(`Meal Name: ${mealName}\nMeal Type: ${mealType}`);
 
-      console.log(`Meal Name: ${mealName}\nMeal Type: ${mealType}`);
-      console.log(MealList);
+        MealList.push(newMeal);
+        // Create html and add meals to appropriate <ul>
+        populateMealLists(MealList);
+        // Reset form
+        MEALFORM.reset();
 
-      MealList.push(newMeal);
-      // Add meals to appropriate lists
-      populateMealLists(MealList);
-      // Reset form
-      MEALFORM.reset();
-
-      return MealList;
-
-    } else {
+        return MealList;
+      }
+    } 
+    else {
       // alert the user and bail
       window.alert('Inputs cannot be blank');
       return;
