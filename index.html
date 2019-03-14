@@ -18,38 +18,43 @@
   <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
-  <header>
+  <header class="main-header">
     <h1>MealPlanner</h1>  
   </header>
 
   <main>
     <section class="content-container">
       <form id="MealForm" class="meal-form" method="post" name="create_meal" autocomplete="off" enctype="text/plain" novalidate>
-        <div class="input-block text-input">
-          <label for="meal_name">Meal name</label>
-          <input type="text" name="meal_name" placeholder="Duck Confit" required>
-        </div>
+        <fieldset>
+          <div class="input-block text-input">
+            <label for="meal_name">Meal name</label>
+            <input type="text" name="meal_name" placeholder="Duck Confit" required>
+          </div>
 
-        <p>Does it contain meat?</p>
-        <div class="input-block radio-input">
-          <div>
-            <label for="YesMeat">Yes</label>
-            <input id="YesMeat" type="radio" name="has_meat" value="true" required>
+          <p>Does it contain meat?</p>
+          <div class="input-block radio-input">
+            <div>
+              <label for="YesMeat">Yes</label>
+              <input id="YesMeat" type="radio" name="has_meat" value="true" required>
+            </div>
+
+            <div>
+              <label for="NoMeat">No</label>
+              <input id="NoMeat" type="radio" name="has_meat" value="false" required>
+            </div>
           </div>
 
           <div>
-            <label for="NoMeat">No</label>
-            <input id="NoMeat" type="radio" name="has_meat" value="false" required>
+            <button id="AddMealBtn" class="primary-btn" name="add_meal" value="primary" type="submit">Add Meal</button>
           </div>
-        </div>
-
-        <div>
-          <button id="AddMealBtn" class="primary-btn" name="add_meal" value="primary" type="submit">Add Meal</button>
-        </div>
+        </fieldset>
       </form>
     </section>
-    <section class="content-container">
-      <!-- ul built and injected via js -->
+
+    <section>
+      <div class="content-container">
+      <!-- <ul> built and injected via js -->
+      </div>
     </section>
   </main>
   

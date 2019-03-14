@@ -11,17 +11,20 @@ body {
   color: $mp-brown;
 }
 
-header {
-  padding: 2rem 4rem;
-  background-color: $mp-pale-yellow;
-  box-shadow: $mp-box-shadow;
-}
-
-h1 {
+h1,
+h2 {
   margin-bottom: 0;
   font-size: 2rem;
   letter-spacing: 0;
   font-weight: 600;
+}
+
+fieldset { margin: 0; }
+
+.main-header {
+  padding: 2rem 4rem;
+  background-color: $mp-pale-yellow;
+  box-shadow: $mp-box-shadow;
 }
 
 .content-container {

@@ -656,16 +656,20 @@ body {
   background-color: #FFCC00;
   color: #4D3319; }
 
-header {
-  padding: 2rem 4rem;
-  background-color: #FFE680;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
-
-h1 {
+h1,
+h2 {
   margin-bottom: 0;
   font-size: 2rem;
   letter-spacing: 0;
   font-weight: 600; }
+
+fieldset {
+  margin: 0; }
+
+.main-header {
+  padding: 2rem 4rem;
+  background-color: #FFE680;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
 
 .content-container {
   width: 100%;
