@@ -3,10 +3,6 @@
 @import 'normalize';
 @import 'skeleton';
 @import 'partials/vars';
-
-// should use a mixin or a function to adjust opacity here
-$mp-box-shadow:   0 0 20px rgba(0, 0, 0, 0.3);
-
   
 * { box-sizing: border-box; }
 
@@ -38,7 +34,7 @@ h1 {
 .meal-form {
   width: 100%;
   max-width: 40rem;
-	border: 1px solid $mp-pale-yellow;
+	border: $mp-border-yellow;
 	padding: 3rem;
 	background-color: $mp-white;
 	box-shadow: $mp-box-shadow;
@@ -70,11 +66,12 @@ h1 {
     input { 
       width: 100%;
       margin-bottom: 0; 
+      border: $mp-border-def;
     }
   }
 
   &.radio-input {
-    border-bottom: 1px solid #D1D1D1;
+    border-bottom: $mp-border-def;
 
     label { margin: 0 2rem 0 0; }
     div {
@@ -89,18 +86,42 @@ h1 {
 
 .list {
   width: 50%;
-  padding: 3rem;
+  margin: 0;
   list-style: none;
+  border-top: $mp-border-def;
+  border-right: $mp-border-def;
+  border-left: $mp-border-def;
   background-color: $mp-white;
   box-shadow: $mp-box-shadow;
 
+  &:first-of-type { margin-right: 2rem; }
+
+  li { margin: 0; }
+
   a {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: $mp-border-def;
+    font-size: 1.4rem;
     cursor: pointer;
     color: $mp-black;
 
     &:hover { 
       color: $mp-brown; 
       text-decoration: underline;
+      background-color: $mp-offwhite;
+      border-bottom: 1px solid $mp-white;
+    }
+
+    &::before {
+      content: " ";
+      width: 1rem;
+      height: 1rem;
+      display: block;
+      margin-right: 1rem;
+      border-radius: 50%;
+      background-color: $mp-pale-yellow;
     }
   }
 }
