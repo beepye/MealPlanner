@@ -7,7 +7,7 @@ const MEAL = function(mealName, mealType) {
 
 const MEALFORM = document.getElementById('MealForm');
 
-let MealList = [];
+var MealList = [];
     
 document.addEventListener('click', function (event) {
 
@@ -19,27 +19,26 @@ document.addEventListener('click', function (event) {
         meatCheck = document.querySelector('input[name = "has_meat"]:checked');
 
     if(meatCheck !== null && mealName !== "") {
-      
       // Does item name already exist?
-      // var match = doesMealExist(MealList, mealName);
       if(doesMealExist(MealList, mealName)) { 
-      console.log('there\'s a match baby!');}
+        alert(`${mealName} already exists!`); 
+        return; 
+      }
+      // If not add it to the MealList array 
+      else {
+        let mealType = meatCheck.value == 'true' ? 'meat-eater' : 'vegetarian',
+            newMeal = new  MEAL(mealName, mealType);
 
-      let mealType = meatCheck.value == 'true' ? 'meat-eater' : 'vegetarian',
-          newMeal = new  MEAL(mealName, mealType);
-
-      console.log(`Meal Name: ${mealName}\nMeal Type: ${mealType}`);
-      console.log(MealList);
-
-      MealList.push(newMeal);
-      // Add meals to appropriate lists
-      populateMealLists(MealList);
-      // Reset form
-      MEALFORM.reset();
-
-      return MealList;
-
-    } else {
+        console.log(`Meal Name: ${mealName}\nMeal Type: ${mealType}`);
+        // Add new meal to the list
+        MealList.push(newMeal);
+        // Create html and inject new list item
+        populateMealLists(MealList);
+        // Reset form
+        MEALFORM.reset();
+      }
+    } 
+    else {
       // alert the user and bail
       window.alert('Inputs cannot be blank');
       return;
@@ -82,9 +81,7 @@ var populateMealLists = function thing(listArray) {
 
   let sectionElem = document.querySelector('.js-container');
   // Do the lists already exist?
-  if(!sectionElem) {
-    createHtmlBlock();
-  }
+  if(!sectionElem) { createHtmlBlock(); }
 
   let meatList = document.querySelector('.js-meatList'),
       vegList = document.querySelector('.js-vegList');
