@@ -30,10 +30,10 @@ document.addEventListener('click', function (event) {
             newMeal = new  MEAL(mealName, mealType);
 
         console.log(`Meal Name: ${mealName}\nMeal Type: ${mealType}`);
-        // Create html and inject new list item
-        populateMealLists(MealList);
         // Add new meal to the list
         MealList.push(newMeal);
+        // Create html and inject new list item
+        populateMealLists(MealList);
         // Reset form
         MEALFORM.reset();
       }
