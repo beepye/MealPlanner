@@ -30,10 +30,10 @@ document.addEventListener('click', function (event) {
             newMeal = new  MEAL(mealName, mealType);
 
         console.log(`Meal Name: ${mealName}\nMeal Type: ${mealType}`);
-        // Add new meal to the list
-        MealList.push(newMeal);
         // Create html and inject new list item
         populateMealLists(MealList);
+        // Add new meal to the list
+        MealList.push(newMeal);
         // Reset form
         MEALFORM.reset();
       }
@@ -55,9 +55,7 @@ var doesMealExist = function checkForMatch(array, name) {
   array.forEach(function(item) { if(item.mealName === name) { count++ }})
   // This is the only method that's worked so far for detecting
   // whether the name already exists
-  if(count >= 1) { mealExists = true; } else { mealExists = false; }
-
-  return mealExists;
+  return mealExists = (count >= 1 ? true : false);
 }
 
 // Build html container + lists
@@ -88,6 +86,7 @@ var populateMealLists = function thing(listArray) {
 
   // Build html list
   listArray.forEach(function(item) {
+
     // Create list elem
     let listItem = document.createElement('li'),
         linkTag = document.createElement('a');
