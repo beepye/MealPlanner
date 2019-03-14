@@ -1,73 +1,132 @@
 /* Planning to experiment with CSS Grid for layout */
 
-// All vars prefix with "mp-"
-$mp-brown:        #4D3319;
-$mp-pale-yellow:  #FFE680;
-$mp-yellow:       #FFCC00;
-$mp-black:        #211C09;
-
-// should use a mixin or a function to adjust opacity here
-$mp-box-shadow:   0 0 20px rgba(0, 0, 0, 0.3);
+@import 'normalize';
+@import 'skeleton';
+@import 'partials/vars';
+  
+* { box-sizing: border-box; }
 
 body {
-	box-sizing: border-box;
 	background-color: $mp-yellow;
   color: $mp-brown;
 }
 
-header {
-  padding: 2rem 4rem;
-  border-bottom: 2px solid $mp-brown;
-  background-color: $mp-pale-yellow;
-  box-shadow: $mp-box-shadow;
-}
-
-h1 {
+h1,
+h2 {
   margin-bottom: 0;
   font-size: 2rem;
   letter-spacing: 0;
   font-weight: 600;
 }
 
-input { 
-  margin-bottom: 2rem; 
-  
-  &::placeholder { color: #BBB; }
+fieldset { margin: 0; }
+
+.main-header {
+  padding: 2rem 4rem;
+  background-color: $mp-pale-yellow;
+  box-shadow: $mp-box-shadow;
+}
+
+.content-container {
+  width: 100%;
+  padding: 4rem 4rem 0;
+  display: flex;
+  justify-content: center;
 }
 
 .meal-form {
-	width: 50%;
-	max-width: 30rem;
-	margin: 10vh auto;
-	border: 1px solid $mp-pale-yellow;
-	border-radius: 4px;
+  width: 100%;
+  max-width: 40rem;
+	border: $mp-border-yellow;
 	padding: 3rem;
-	background-color: #FFF;
+	background-color: $mp-white;
 	box-shadow: $mp-box-shadow;
 
   p {
     margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 
-.input-block--text,
-.input-block--radio {
+.input-block {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+
+  input { 
+    margin-bottom: 0.5rem; 
+
+    &::placeholder { color: #BBB; }
+  }
+
+  &.text-input {
+    label { 
+      margin-right: 2rem; 
+      font-weight: 500;
+    }
+
+    input { 
+      width: 100%;
+      margin-bottom: 0; 
+      border: $mp-border-def;
+    }
+  }
+
+  &.radio-input {
+    border-bottom: $mp-border-def;
+
+    label { margin: 0 2rem 0 0; }
+    div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    div:nth-of-type(odd) { margin-right: 4rem; }
+  }
 }
 
-.input-block--radio {
-  border-bottom: 1px solid #D1D1D1;
+.list {
+  width: 50%;
+  margin: 0;
+  list-style: none;
+  border-top: $mp-border-def;
+  border-right: $mp-border-def;
+  border-left: $mp-border-def;
+  background-color: $mp-white;
+  box-shadow: $mp-box-shadow;
 
-  div:first-of-type { margin-right: 4rem; }
-}
+  &:first-of-type { margin-right: 2rem; }
 
-.input-block--text {
-  label { margin-right: 2rem; }
-  input { margin-bottom: 0; }
+  li { margin: 0; }
+
+  a {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: $mp-border-def;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: $mp-black;
+
+    &:hover { 
+      color: $mp-brown; 
+      text-decoration: underline;
+      background-color: $mp-offwhite;
+      border-bottom: 1px solid $mp-white;
+    }
+
+    &::before {
+      content: " ";
+      width: 1rem;
+      height: 1rem;
+      display: block;
+      margin-right: 1rem;
+      border-radius: 50%;
+      background-color: $mp-pale-yellow;
+    }
+  }
 }
 
 .primary-btn { 

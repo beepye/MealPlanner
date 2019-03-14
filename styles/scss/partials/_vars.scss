@@ -1,0 +1,19 @@
+// All vars prefix with "mp-"
+
+//----Colors
+$mp-white:        #FFFFFF;
+$mp-offwhite:			#F6F6F6;
+$mp-brown:        #4D3319;
+$mp-pale-yellow:  #FFE680;
+$mp-yellow:       #FFCC00;
+$mp-black:        #211C09;
+$mp-lgt-grey:			#E4E4E4;
+
+//----Box Shadow
+// should use a mixin or a function to adjust opacity here
+$mp-box-shadow:   		0 0 20px rgba(0, 0, 0, 0.3);
+$mp-box-shadow-inset: inset 0px 0px 1px $mp-lgt-grey;
+
+//----Borders
+$mp-border-def:			1px solid $mp-lgt-grey;
+$mp-border-yellow: 	1px solid $mp-pale-yellow;
