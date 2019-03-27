@@ -55,7 +55,7 @@ var doesMealExist = function checkForMatch(array, name) {
   array.forEach(function(item) { if(item.mealName === name) { count++ }})
   // This is the only method that's worked so far for detecting
   // whether the name already exists
-  return mealExists = (count >= 1 ? true : false);
+  return mealExists = (count === 1 ? true : false);
 }
 
 // Build html container + lists

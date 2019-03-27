@@ -739,8 +739,8 @@ fieldset {
     .list a:hover {
       color: #4D3319;
       text-decoration: underline;
-      background-color: #F6F6F6;
-      border-bottom: 1px solid #FFFFFF; }
+      background-color: #FFFAE8;
+      border-bottom: 1px solid #FFFAE8; }
     .list a::before {
       content: " ";
       width: 1rem;
