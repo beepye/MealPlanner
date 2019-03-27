@@ -663,6 +663,10 @@ h2 {
   letter-spacing: 0;
   font-weight: 600; }
 
+main {
+  max-width: 75rem;
+  margin: 0 auto; }
+
 fieldset {
   margin: 0; }
 
@@ -703,9 +707,9 @@ fieldset {
   .input-block.text-input input {
     width: 100%;
     margin-bottom: 0;
-    border: 1px solid #eaecef; }
+    border: 1px solid #EAECEF; }
   .input-block.radio-input {
-    border-bottom: 1px solid #eaecef; }
+    border-bottom: 1px solid #EAECEF; }
     .input-block.radio-input label {
       margin: 0 2rem 0 0; }
     .input-block.radio-input div {
@@ -719,9 +723,9 @@ fieldset {
   width: 50%;
   margin: 0;
   list-style: none;
-  border-top: 1px solid #eaecef;
-  border-right: 1px solid #eaecef;
-  border-left: 1px solid #eaecef;
+  border-top: 1px solid #EAECEF;
+  border-right: 1px solid #EAECEF;
+  border-left: 1px solid #EAECEF;
   background-color: #FFFFFF;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
   .list:first-of-type {
@@ -732,15 +736,15 @@ fieldset {
     display: flex;
     align-items: center;
     padding: 1rem 2rem;
-    border-bottom: 1px solid #eaecef;
+    border-bottom: 1px solid #EAECEF;
     font-size: 1.4rem;
     cursor: pointer;
     color: #211C09; }
     .list a:hover {
       color: #4D3319;
       text-decoration: underline;
-      background-color: #F6F6F6;
-      border-bottom: 1px solid #FFFFFF; }
+      background-color: #FFFAE8;
+      border-bottom: 1px solid #FFFAE8; }
     .list a::before {
       content: " ";
       width: 1rem;

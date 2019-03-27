@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress --mode=production",
     "watch": "webpack --progress --watch",
-    "server": "webpack-dev-server --open",
-    "scss": "node-sass --watch styles/scss/*.scss -o styles/"
+    "start-server": "webpack-dev-server --open",
+    "styles": "node-sass --watch styles/scss/ -o styles/"
   },
   "repository": {
     "type": "git",
@@ -22,16 +22,16 @@
   },
   "homepage": "http://www.thebrianpye.com/MealPlanner/",
   "dependencies": {
-    "modernizr": "^3.7.0",
-    "npm": "^6.8.0",
+    "modernizr": "^3.7.1",
+    "npm": "^6.9.0",
     "requirejs": "^2.3.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/preset-env": "^7.3.4",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
     "babel-loader": "^8.0.5",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
+    "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
   }
 }
