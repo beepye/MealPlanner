@@ -663,6 +663,10 @@ h2 {
   letter-spacing: 0;
   font-weight: 600; }
 
+main {
+  max-width: 75rem;
+  margin: 0 auto; }
+
 fieldset {
   margin: 0; }
 
