@@ -36,9 +36,11 @@ fieldset { margin: 0; }
 .content-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
   padding: 4rem 4rem 0;
+  border: 10px solid rgba($mp-pale-yellow, .7);
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 4px;
 }
 
 .list {
@@ -87,6 +89,7 @@ fieldset { margin: 0; }
   margin-bottom: 0;
   background-color: $mp-pale-yellow;
   border-color: $mp-yellow;
+  align-self: center;
   
   &:hover { border-color: $mp-offwhite; } 
 }

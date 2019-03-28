@@ -679,9 +679,11 @@ fieldset {
 .content-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 4rem 4rem 0; }
+  padding: 4rem 4rem 0;
+  border: 10px solid rgba(255, 230, 128, 0.7);
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 4px; }
 
 .list {
   width: 50%;
@@ -721,6 +723,7 @@ fieldset {
 .primary-btn {
   margin-bottom: 0;
   background-color: #FFE680;
-  border-color: #FFCC00; }
+  border-color: #FFCC00;
+  align-self: center; }
   .primary-btn:hover {
     border-color: #FFFAE8; }
