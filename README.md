@@ -6,20 +6,14 @@ Currently lives [here](http://www.thebrianpye.com/MealPlanner/).
 
 ## The idea behind this app
 
-The original intent was for this to be a meal planner for me and my wife - automate the weekly dinner list. What at first seemed like a fitting way to practice and improve my javascript skills and solve a real-world problem has revealed itself to be a much larger under-taking than when initially conceived (I guess an unavoidable issue when you're doing something that requires quite a bit of steps that you've never done before).
-
-What the end-all goal is for this app is to give the user a list of meals (presumably for dinner) based off of the meals the user has. But what I didn't see was the wormhole of options this would require not to mention the unrealized idea of needing to save user profiles in order to save their lists. Oh boy oh boy.
+I just want something that will generate a menu based on the meals we have in our cooking arsenal. I've had a ton of ideas on how to extend it but it will require help as it's going to need a database, a login, etc.
 
 In general the app _needs_ to do these things (and maybe more):
-- Create a basic profile that keeps a record of all of the user's meals
-- Allow users to create new meals, edit and remove existing meals
-- Have an option to pass a recipe (I think these would be displayed as cards when clicking on the meal name)
-- Add tags/labels to provide methods of organization and sorting
-- Return a list that creates a menu based off of existing user meals. This would carry a ton of options:
+- Return a list that creates a menu based off of existing user meals. This would carry some options:
     + list could be daily/weekly/monthly
     + list can be put together manually w/ the aid of sorting/tags and checkboxes
-    + generate random list that can be edited
-- A UI...
+    + generate random list that can be edited with items being removed/replaced
+- A decent looking UI
 
 I'm sure there's more.
 
