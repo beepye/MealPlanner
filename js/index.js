@@ -6,30 +6,29 @@
 				
 	var mealList = []
 
-	function getMeals(callback) {
-		// Set up initial request
+	GENERATE_BTN.addEventListener('click', function(ev) {
+		// Call for the JSON and pass anon callback function
+		getMeals(function(response) {
+			// Cycle through each obj in the JSON arr
+			response.forEach(function(item) {
+				console.log(item);
+				mealList.push(item);
+			});
+
+			console.log(mealList.length);
+		});
+	});
+
+	var getMeals = function(callback) {
+		// Set up JSON data request
 		var	xhr = new XMLHttpRequest();
 		xhr.responseType = 'json';
 		xhr.open('GET', URL);
-
+		// Pass the response in a callback function
 		xhr.onload = function() { callback(xhr.response); };
 
 		xhr.send();
 	}
-
-	getMeals(function(response) {
-		// Cycle through each obj in the arr
-		response.forEach(function(item) {
-			console.log(item);
-			mealList.push(item);
-		});
-
-		console.log(mealList.length);
-	});
-
-	// function doTheDamnThing() {
-	//   getBriansMeals();
-	// }
 
 	// var getBriansMeals = function() {
 	// 	const Meals = request.response;
