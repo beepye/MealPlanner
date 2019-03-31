@@ -3,30 +3,28 @@
 
 	const GENERATE_BTN = document.getElementById('GenerateMealList'),
 		 		URL = 'http://www.thebrianpye.com/Recipes/meals.json';
+				
+	var mealList = []
 
 	function getMeals(callback) {
 		// Set up initial request
 		var	xhr = new XMLHttpRequest();
 		xhr.responseType = 'json';
 		xhr.open('GET', URL);
-		// Once the response status is 200 return the response
-		xhr.onload = function() { 
-			callback(xhr.response);
-		};
+
+		xhr.onload = function() { callback(xhr.response); };
 
 		xhr.send();
 	}
-
-	var list = []
 
 	getMeals(function(response) {
 		// Cycle through each obj in the arr
 		response.forEach(function(item) {
 			console.log(item);
-			return list.push(item);
+			mealList.push(item);
 		});
 
-		console.log(list.length);
+		console.log(mealList.length);
 	});
 
 	// function doTheDamnThing() {
