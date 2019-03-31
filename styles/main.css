@@ -658,7 +658,6 @@ body {
 
 h1,
 h2 {
-  margin-bottom: 0;
   font-size: 2rem;
   letter-spacing: 0;
   font-weight: 600; }
@@ -674,50 +673,17 @@ fieldset {
   padding: 2rem 4rem;
   background-color: #FFE680;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+  .main-header h1 {
+    margin-bottom: 0; }
 
 .content-container {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 4rem 4rem 0;
-  display: flex;
-  justify-content: center; }
-
-.meal-form {
-  width: 100%;
-  max-width: 40rem;
-  border: 1px solid #FFE680;
-  padding: 3rem;
-  background-color: #FFFFFF;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
-  .meal-form p {
-    margin-bottom: 0.5rem;
-    font-weight: 500; }
-
-.input-block {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 3rem; }
-  .input-block input {
-    margin-bottom: 0.5rem; }
-    .input-block input::placeholder {
-      color: #BBB; }
-  .input-block.text-input label {
-    margin-right: 2rem;
-    font-weight: 500; }
-  .input-block.text-input input {
-    width: 100%;
-    margin-bottom: 0;
-    border: 1px solid #EAECEF; }
-  .input-block.radio-input {
-    border-bottom: 1px solid #EAECEF; }
-    .input-block.radio-input label {
-      margin: 0 2rem 0 0; }
-    .input-block.radio-input div {
-      display: flex;
-      align-items: center;
-      margin-bottom: 3rem; }
-    .input-block.radio-input div:nth-of-type(odd) {
-      margin-right: 4rem; }
+  border: 10px solid rgba(255, 230, 128, 0.7);
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 4px; }
 
 .list {
   width: 50%;
@@ -756,4 +722,8 @@ fieldset {
 
 .primary-btn {
   margin-bottom: 0;
-  background-color: #FFE680; }
+  background-color: #FFE680;
+  border-color: #FFCC00;
+  align-self: center; }
+  .primary-btn:hover {
+    border-color: #FFFAE8; }

@@ -13,7 +13,6 @@ body {
 
 h1,
 h2 {
-  margin-bottom: 0;
   font-size: 2rem;
   letter-spacing: 0;
   font-weight: 600;
@@ -30,66 +29,18 @@ fieldset { margin: 0; }
   padding: 2rem 4rem;
   background-color: $mp-pale-yellow;
   box-shadow: $mp-box-shadow;
+
+  h1 { margin-bottom: 0; }
 }
 
 .content-container {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 4rem 4rem 0;
-  display: flex;
-  justify-content: center;
-}
-
-.meal-form {
-  width: 100%;
-  max-width: 40rem;
-	border: $mp-border-yellow;
-	padding: 3rem;
-	background-color: $mp-white;
-	box-shadow: $mp-box-shadow;
-
-  p {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-  }
-}
-
-.input-block {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 3rem;
-
-  input { 
-    margin-bottom: 0.5rem; 
-
-    &::placeholder { color: #BBB; }
-  }
-
-  &.text-input {
-    label { 
-      margin-right: 2rem; 
-      font-weight: 500;
-    }
-
-    input { 
-      width: 100%;
-      margin-bottom: 0; 
-      border: $mp-border-def;
-    }
-  }
-
-  &.radio-input {
-    border-bottom: $mp-border-def;
-
-    label { margin: 0 2rem 0 0; }
-    div {
-      display: flex;
-      align-items: center;
-      margin-bottom: 3rem;
-    }
-
-    div:nth-of-type(odd) { margin-right: 4rem; }
-  }
+  border: 10px solid rgba($mp-pale-yellow, .7);
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 4px;
 }
 
 .list {
@@ -136,5 +87,9 @@ fieldset { margin: 0; }
 
 .primary-btn { 
   margin-bottom: 0;
-  background-color: $mp-pale-yellow; 
+  background-color: $mp-pale-yellow;
+  border-color: $mp-yellow;
+  align-self: center;
+  
+  &:hover { border-color: $mp-offwhite; } 
 }
