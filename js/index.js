@@ -41,7 +41,8 @@
 				main = document.querySelector('main'),
 				list = document.createElement('ul');
 		// Build list for meals
-		list.className = "meal-list";
+		list.className = "list js-list";
+		container.className = "content-container --no-border";
 		main.append(container);
 		container.append(list);
 

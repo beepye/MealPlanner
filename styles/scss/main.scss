@@ -41,19 +41,17 @@ fieldset { margin: 0; }
   padding: 2rem;
   margin: 2rem;
   border-radius: 4px;
+
+  &.--no-border { border: none; }
 }
 
 .list {
-  width: 50%;
   margin: 0;
   list-style: none;
   border-top: $mp-border-def;
   border-right: $mp-border-def;
   border-left: $mp-border-def;
   background-color: $mp-white;
-  box-shadow: $mp-box-shadow;
-
-  &:first-of-type { margin-right: 2rem; }
 
   li { margin: 0; }
 
@@ -68,7 +66,6 @@ fieldset { margin: 0; }
 
     &:hover { 
       color: $mp-brown; 
-      text-decoration: underline;
       background-color: $mp-offwhite;
       border-bottom: 1px solid $mp-offwhite;
     }

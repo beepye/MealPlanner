@@ -684,18 +684,16 @@ fieldset {
   padding: 2rem;
   margin: 2rem;
   border-radius: 4px; }
+  .content-container.--no-border {
+    border: none; }
 
 .list {
-  width: 50%;
   margin: 0;
   list-style: none;
   border-top: 1px solid #EAECEF;
   border-right: 1px solid #EAECEF;
   border-left: 1px solid #EAECEF;
-  background-color: #FFFFFF;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
-  .list:first-of-type {
-    margin-right: 2rem; }
+  background-color: #FFFFFF; }
   .list li {
     margin: 0; }
   .list a {
@@ -708,7 +706,6 @@ fieldset {
     color: #211C09; }
     .list a:hover {
       color: #4D3319;
-      text-decoration: underline;
       background-color: #FFFAE8;
       border-bottom: 1px solid #FFFAE8; }
     .list a::before {
