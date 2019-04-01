@@ -3,11 +3,11 @@
 
 	const GENERATE_BTN = document.getElementById('GenerateMealList'),
 		 		URL = 'http://www.thebrianpye.com/Recipes/meals.json';
-				
-	let mealList = [],
-			days = 5; // setting hard value for now
 
 	GENERATE_BTN.addEventListener('click', function(ev) {
+		
+		let mealList = [],
+				days = 5; // setting hard value for now
 		// Call for the JSON and pass anon callback function
 		getMeals(function(response) {
 			// Cycle through each obj in the JSON arr
@@ -30,7 +30,7 @@
 
 		xhr.send();
 	}
-	// Not sure why but this is returning duplicate items
+	
 	var selectRandomMeals = function selectRandomMeals(days, arr) {
 		// Reorder array in random sequence
 		let randomlyOrderedArray = arr.sort(function() { return .5 - Math.random(); });
@@ -39,10 +39,6 @@
 		console.log(newArray);
 	}
 
-	// var getBriansMeals = function() {
-	// 	const Meals = request.response;
 	// 	var myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
-	// 	console.log(myMeals);
-	// }
 
 }());
