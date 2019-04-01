@@ -6,20 +6,16 @@
 
 	GENERATE_BTN.addEventListener('click', function(ev) {
 		
-		let mealList = [],
-				days = 5; // setting hard value for now
-		// Call for the JSON and pass anon callback function
+		let mealList = [], days = 5; // setting hard days value for now
+		
 		getMeals(function(response) {
-			// Cycle through each obj in the JSON arr
-			response.forEach(function(item, index) {
-				console.log(`${index} : ${item.name} : ${item.owner}`);
-				mealList.push(item);
-			});
+			response.forEach(function(item, index) { mealList.push(item); });
 
-			selectRandomMeals(days, mealList, createMealListHTML);
+			selectRandomMeals(days, mealList, createListHTML);
 		});
 	});
 
+	// Create XHR request
 	var getMeals = function getMeals(callback) {
 		// Set up JSON data request
 		var	xhr = new XMLHttpRequest();
@@ -30,6 +26,7 @@
 		xhr.send();
 	}
 
+	// Create a randomly generated array from JSON response
 	var selectRandomMeals = function selectRandomMeals(days, arr, callback) {
 		// Reorder array in random sequence
 		let randomlyOrderedArray = arr.sort(function() { return .5 - Math.random(); });
@@ -38,23 +35,32 @@
 		callback(newArray);
 	}
 
-	var createMealListHTML = function createMealListHTML(arr) {
+	// Create HTML list elements and inject into DOM
+	var createListHTML = function createListHTML(arr) {
 		let container = document.createElement('section'),
 				main = document.querySelector('main'),
-				list = document.createElement('ul'),
-				item = document.createElement('li'),
-				itemLink = document.createElement('a'),
-				listItem = item.append(itemLink);
+				list = document.createElement('ul');
 		// Build list for meals
+		list.className = "meal-list";
 		main.append(container);
 		container.append(list);
-		// console.log(arr);
+
+		populateList(arr);
+	} 
+	
+	// Create list items from array and inject into DOM
+	var populateList = function populateList(arr) {	
+		let menuList = document.querySelector('ul');
 
 		arr.forEach(function(item) {
-			console.log(item.name);
+			let	link = document.createElement('a'),
+					linkItem = document.createElement('li');
+			// Build each list item and inject into DOM
+			link.innerHTML = item.name;
+			linkItem.append(link);
+			menuList.append(linkItem);
 		});
-	} 
-	// createMealListHTML();
+	}
 
 	// 	var myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
 
