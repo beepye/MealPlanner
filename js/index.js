@@ -2,8 +2,16 @@
 	'use strict';
 
 	const GENERATE_BTN = document.getElementById('GenerateMealList'),
-		 		URL = 'http://www.thebrianpye.com/Recipes/meals.json';
-
+		 		URL = 'http://www.thebrianpye.com/Recipes/meals.json',
+				BTN_TEXT = [
+					'Try again', 
+					'Give it another spin', 
+					'Keep trying', 
+					'Don\'t like this one', 
+					'Wrong answer', 
+					'Ew', 
+					'Gross'
+				];
 	// Click event to create the initial list
 	GENERATE_BTN.addEventListener('click', function(ev) {
 		
@@ -11,6 +19,9 @@
 				mealList = [], days = 7; // setting hard days value for now
 		// Remove meal list if it exists already
 		if(listContainer !== undefined) { removeList(); }
+		// Change button messaging
+		var newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
+		GENERATE_BTN.innerHTML = newMessage;
 		
 		getMeals(function(response) {
 			// Add items to meal list
