@@ -724,3 +724,10 @@ fieldset {
   align-self: center; }
   .primary-btn:hover {
     border-color: #FFFAE8; }
+
+.secondary-btn.--link {
+  width: 50%;
+  border: none;
+  background-color: transparent; }
+  .secondary-btn.--link:hover {
+    text-decoration: underline; }

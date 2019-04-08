@@ -90,3 +90,13 @@ fieldset { margin: 0; }
   
   &:hover { border-color: $mp-offwhite; } 
 }
+
+.secondary-btn {
+  &.--link {
+    width: 50%;
+    border: none;
+    background-color: transparent;
+
+    &:hover { text-decoration: underline; }
+  }
+}
