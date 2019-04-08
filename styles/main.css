@@ -695,24 +695,21 @@ fieldset {
   border-left: 1px solid #EAECEF;
   background-color: #FFFFFF; }
   .list li {
-    margin: 0;
     display: flex;
-    border-bottom: 1px solid #EAECEF; }
+    align-items: center;
+    margin: 0;
+    border-bottom: 1px solid #EAECEF;
+    cursor: pointer; }
     .list li:hover {
       color: #4D3319;
       background-color: #FFFAE8;
       border-bottom: 1px solid #FFFAE8; }
-    .list li::after {
-      content: "x";
-      align-self: center;
-      margin-right: 2rem; }
   .list a {
     width: 100%;
     display: flex;
     align-items: center;
     padding: 1rem 2rem;
     font-size: 1.4rem;
-    cursor: pointer;
     color: #211C09; }
     .list a::before {
       content: " ";
@@ -723,6 +720,9 @@ fieldset {
       border-radius: 50%;
       background-color: #FFE680; }
 
+.btn-wrapper {
+  display: flex; }
+
 .primary-btn {
   margin-bottom: 0;
   background-color: #FFE680;
@@ -731,9 +731,17 @@ fieldset {
   .primary-btn:hover {
     border-color: #FFFAE8; }
 
-.secondary-btn.--link {
-  width: 50%;
-  border: none;
-  background-color: transparent; }
-  .secondary-btn.--link:hover {
-    text-decoration: underline; }
+.secondary-btn {
+  width: 100%; }
+  .secondary-btn.--link {
+    margin: 0;
+    border: none;
+    background-color: transparent; }
+    .secondary-btn.--link:hover {
+      text-decoration: underline; }
+
+.kill-item-btn {
+  width: unset;
+  margin: 0 2rem 0 0;
+  padding: unset;
+  border: none; }

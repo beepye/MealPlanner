@@ -17,14 +17,19 @@
 			response.forEach(function(item, index) { mealList.push(item); });
 			// Create new list based off of the response
 			selectRandomMeals(days, mealList, createListHTML);
-			
+
 			let clearBtn = document.querySelector('.js-clear'),
-					regenBtn = document.querySelector('.js-regen');
+					regenBtn = document.querySelector('.js-regen'),
+					removeBtn = document.querySelectorAll('.js-remove');
 			// Clear the list - remove from DOM
 			clearBtn.addEventListener('click', removeList);
 			// Clear the list and create another - remove old from DOM
 			regenBtn.addEventListener('click', function() {
 				regenerateList(days, mealList, createListHTML);
+			});
+			// Add event listener to each kill button
+			removeBtn.forEach(function(item) { 
+				item.addEventListener('click', removeListItem);
 			});
 		});
 	});
@@ -51,13 +56,15 @@
 
 	// Create HTML list elements and inject into DOM
 	var createListHTML = function createListHTML(arr) {
+		// Create html elems
 		let container = document.createElement('section'),
 				main = document.querySelector('main'),
 				list = document.createElement('ul'),
 				btnWrapper = document.createElement('div'),
 				regenBtn = document.createElement('button'),
 				clearBtn = document.createElement('button');
-		// Build list for meals
+
+		// Add props to elems
 		container.className = 'content-container --no-border';
 		list.className = 'list js-list';
 		btnWrapper.className = 'btn-wrapper';
@@ -65,6 +72,8 @@
 		clearBtn.innerHTML = 'Clear the list';
 		regenBtn.className = 'secondary-btn --link js-regen';
 		regenBtn.innerHTML = 'Try again';
+
+		// Build the list
 		main.appendChild(container);
 		container.appendChild(list);
 		container.appendChild(btnWrapper);
@@ -79,12 +88,20 @@
 		let menuList = document.querySelector('ul');
 
 		arr.forEach(function(item) {
+			// Create list html elems
 			let	link = document.createElement('a'),
-					linkItem = document.createElement('li');
-			// Build each list item and inject into DOM
+					linkItem = document.createElement('li'),
+					removeBtn = document.createElement('button');
+		
+			// Add props to elems
 			link.innerHTML = item.name;
-			linkItem.append(link);
-			menuList.append(linkItem);
+			removeBtn.className = 'secondary-btn kill-item-btn js-remove';
+			removeBtn.innerHTML = 'x';
+
+			// Build the list item
+			linkItem.appendChild(link);
+			linkItem.appendChild(removeBtn);
+			menuList.appendChild(linkItem);
 		});
 	}
 
@@ -92,6 +109,11 @@
 	var removeList = function removeList() {
 		let listContainer = document.querySelectorAll('.content-container')[1];
 		listContainer.remove();
+	}
+
+	var removeListItem = function removeListItem() {
+		let listItem = this.closest('li');
+		listItem.remove();
 	}
 	
 	// Create a new list and remove the old one
