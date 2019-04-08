@@ -53,22 +53,32 @@ fieldset { margin: 0; }
   border-left: $mp-border-def;
   background-color: $mp-white;
 
-  li { margin: 0; }
-
-  a {
+  li { 
+    margin: 0;
     display: flex;
-    align-items: center;
-    padding: 1rem 2rem;
     border-bottom: $mp-border-def;
-    font-size: 1.4rem;
-    cursor: pointer;
-    color: $mp-black;
 
     &:hover { 
       color: $mp-brown; 
       background-color: $mp-offwhite;
       border-bottom: 1px solid $mp-offwhite;
     }
+
+    &::after {
+      content: "x";
+      align-self: center;
+      margin-right: 2rem;
+    } 
+  }
+
+  a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: $mp-black;
 
     &::before {
       content: " ";
@@ -89,4 +99,14 @@ fieldset { margin: 0; }
   align-self: center;
   
   &:hover { border-color: $mp-offwhite; } 
+}
+
+.secondary-btn {
+  &.--link {
+    width: 50%;
+    border: none;
+    background-color: transparent;
+
+    &:hover { text-decoration: underline; }
+  }
 }
