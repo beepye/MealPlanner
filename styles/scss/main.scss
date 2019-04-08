@@ -54,21 +54,17 @@ fieldset { margin: 0; }
   background-color: $mp-white;
 
   li { 
-    margin: 0;
     display: flex;
+    align-items: center;
+    margin: 0;
     border-bottom: $mp-border-def;
+    cursor: pointer;
 
     &:hover { 
       color: $mp-brown; 
       background-color: $mp-offwhite;
       border-bottom: 1px solid $mp-offwhite;
     }
-
-    &::after {
-      content: "x";
-      align-self: center;
-      margin-right: 2rem;
-    } 
   }
 
   a {
@@ -77,7 +73,6 @@ fieldset { margin: 0; }
     align-items: center;
     padding: 1rem 2rem;
     font-size: 1.4rem;
-    cursor: pointer;
     color: $mp-black;
 
     &::before {
@@ -92,6 +87,8 @@ fieldset { margin: 0; }
   }
 }
 
+.btn-wrapper { display: flex; }
+
 .primary-btn { 
   margin-bottom: 0;
   background-color: $mp-pale-yellow;
@@ -102,11 +99,20 @@ fieldset { margin: 0; }
 }
 
 .secondary-btn {
+  width: 100%;
+
   &.--link {
-    width: 50%;
+    margin: 0;
     border: none;
     background-color: transparent;
 
     &:hover { text-decoration: underline; }
   }
+}
+
+.kill-item-btn {
+  width: unset;
+  margin: 0 2rem 0 0;
+  padding: unset;
+  border: none;
 }
