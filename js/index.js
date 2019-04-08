@@ -4,33 +4,38 @@
 	const GENERATE_BTN = document.getElementById('GenerateMealList'),
 		 		URL = 'http://www.thebrianpye.com/Recipes/meals.json',
 				BTN_TEXT = [
-					'Try again', 
-					'Give it another spin', 
-					'Keep trying', 
-					'Don\'t like this one', 
-					'Wrong answer', 
-					'Ew', 
-					'Gross'
+					`Try again`, 
+					`Give it another spin`, 
+					`Keep trying`, 
+					`Don\'t like this one`,
+					`Ew`, 
+					`Gross`
 				];
+
+	let count = 0;
 	// Click event to create the initial list
 	GENERATE_BTN.addEventListener('click', function(ev) {
 		
 		let listContainer = document.querySelectorAll('.content-container')[1],
-				mealList = [], days = 7; // setting hard days value for now
+				mealList = [], 
+				days = 7, // setting hard days value for now
+				newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
+				
+		count++
 		// Remove meal list if it exists already
 		if(listContainer !== undefined) { removeList(); }
 		// Change button messaging
-		var newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
 		GENERATE_BTN.innerHTML = newMessage;
-		
+		// Hahaha
+		if(count % 10 === 0) { GENERATE_BTN.innerHTML = `Are you effing serious?`; }
+		// JSON call
 		getMeals(function(response) {
 			// Add items to meal list
 			response.forEach(function(item, index) { mealList.push(item); });
 			// Create new list based off of the response
 			selectRandomMeals(days, mealList, createListHTML);
 
-			let regenBtn = document.querySelector('.js-regen'),
-					list = document.querySelector('.js-list'),
+			let list = document.querySelector('.js-list'),
 					removeBtn = document.querySelectorAll('.js-remove');
 			// Clear the individual list item
 			list.addEventListener('click', removeListItem);
@@ -100,22 +105,21 @@
 		});
 	}
 
-	// Remove container from DOM
+	// Remove list from DOM
 	var removeList = function removeList() {
 		let listContainer = document.querySelectorAll('.content-container')[1];
 		listContainer.remove();
 	}
 
+	// Remove individual list item
 	var removeListItem = function removeListItem(e) {
 		let listItem = e.target.closest('li');
 		listItem.remove();
 	}
 	
-	// Create a new list and remove the old one
-	// var regenerateList = function regenerateList(days, mealList, createListHTML) {
-	// 	removeList();
-	// 	selectRandomMeals(days, mealList, createListHTML)
-	// }
+	var refreshItem = function refreshItem(arr) {
+		// compare arrays and return unrepeated obj to replace current
+	}
 	// 	var myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
 
 }());
