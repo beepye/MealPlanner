@@ -8,9 +8,9 @@
 	GENERATE_BTN.addEventListener('click', function(ev) {
 		
 		let listContainer = document.querySelectorAll('.content-container')[1],
-				mealList = [], days = 5; // setting hard days value for now
-		// Remove meal list if it exists before creating a new one
-		if(listContainer != undefined) { removeList(); }
+				mealList = [], days = 7; // setting hard days value for now
+		// Remove meal list if it exists already
+		if(listContainer !== undefined) { removeList(); }
 		
 		getMeals(function(response) {
 			// Add items to meal list
@@ -18,16 +18,9 @@
 			// Create new list based off of the response
 			selectRandomMeals(days, mealList, createListHTML);
 
-			let clearBtn = document.querySelector('.js-clear'),
-					regenBtn = document.querySelector('.js-regen'),
+			let regenBtn = document.querySelector('.js-regen'),
 					list = document.querySelector('.js-list'),
 					removeBtn = document.querySelectorAll('.js-remove');
-			// Clear the list - remove from DOM
-			clearBtn.addEventListener('click', removeList);
-			// Clear the list and create another - remove old from DOM
-			regenBtn.addEventListener('click', function() {
-				regenerateList(days, mealList, createListHTML);
-			});
 			// Clear the individual list item
 			list.addEventListener('click', removeListItem);
 		});
@@ -59,25 +52,17 @@
 		let container = document.createElement('section'),
 				main = document.querySelector('main'),
 				list = document.createElement('ul'),
-				btnWrapper = document.createElement('div'),
-				regenBtn = document.createElement('button'),
-				clearBtn = document.createElement('button');
+				btnWrapper = document.createElement('div');
 
 		// Add props to elems
 		container.className = 'content-container --no-border';
 		list.className = 'list js-list';
 		btnWrapper.className = 'btn-wrapper';
-		clearBtn.className = 'secondary-btn --link js-clear';
-		clearBtn.innerHTML = 'Clear the list';
-		regenBtn.className = 'secondary-btn --link js-regen';
-		regenBtn.innerHTML = 'Try again';
 
 		// Build the list
 		main.appendChild(container);
 		container.appendChild(list);
 		container.appendChild(btnWrapper);
-		btnWrapper.appendChild(clearBtn);
-		btnWrapper.appendChild(regenBtn);
 
 		populateList(arr);
 	} 
@@ -116,10 +101,10 @@
 	}
 	
 	// Create a new list and remove the old one
-	var regenerateList = function regenerateList(days, mealList, createListHTML) {
-		removeList();
-		selectRandomMeals(days, mealList, createListHTML)
-	}
+	// var regenerateList = function regenerateList(days, mealList, createListHTML) {
+	// 	removeList();
+	// 	selectRandomMeals(days, mealList, createListHTML)
+	// }
 	// 	var myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
 
 }());
