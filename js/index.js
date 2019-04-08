@@ -20,6 +20,7 @@
 
 			let clearBtn = document.querySelector('.js-clear'),
 					regenBtn = document.querySelector('.js-regen'),
+					list = document.querySelector('.js-list'),
 					removeBtn = document.querySelectorAll('.js-remove');
 			// Clear the list - remove from DOM
 			clearBtn.addEventListener('click', removeList);
@@ -27,10 +28,8 @@
 			regenBtn.addEventListener('click', function() {
 				regenerateList(days, mealList, createListHTML);
 			});
-			// Add event listener to each kill button
-			removeBtn.forEach(function(item) { 
-				item.addEventListener('click', removeListItem);
-			});
+			// Clear the individual list item
+			list.addEventListener('click', removeListItem);
 		});
 	});
 
@@ -111,8 +110,8 @@
 		listContainer.remove();
 	}
 
-	var removeListItem = function removeListItem() {
-		let listItem = this.closest('li');
+	var removeListItem = function removeListItem(e) {
+		let listItem = e.target.closest('li');
 		listItem.remove();
 	}
 	
