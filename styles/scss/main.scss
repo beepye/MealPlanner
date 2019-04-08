@@ -36,13 +36,15 @@ fieldset { margin: 0; }
 .content-container {
   display: flex;
   flex-direction: column;
-  padding: 4rem 4rem 0;
   border: 10px solid rgba($mp-pale-yellow, .7);
   padding: 2rem;
   margin: 2rem;
   border-radius: 4px;
 
-  &.--no-border { border: none; }
+  &.--no-border { 
+    border: none; 
+    padding: 0;
+  }
 }
 
 .list {

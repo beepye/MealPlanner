@@ -679,13 +679,13 @@ fieldset {
 .content-container {
   display: flex;
   flex-direction: column;
-  padding: 4rem 4rem 0;
   border: 10px solid rgba(255, 230, 128, 0.7);
   padding: 2rem;
   margin: 2rem;
   border-radius: 4px; }
   .content-container.--no-border {
-    border: none; }
+    border: none;
+    padding: 0; }
 
 .list {
   margin: 0;
