@@ -695,19 +695,25 @@ fieldset {
   border-left: 1px solid #EAECEF;
   background-color: #FFFFFF; }
   .list li {
-    margin: 0; }
-  .list a {
+    margin: 0;
     display: flex;
-    align-items: center;
-    padding: 1rem 2rem;
-    border-bottom: 1px solid #EAECEF;
-    font-size: 1.4rem;
-    cursor: pointer;
-    color: #211C09; }
-    .list a:hover {
+    border-bottom: 1px solid #EAECEF; }
+    .list li:hover {
       color: #4D3319;
       background-color: #FFFAE8;
       border-bottom: 1px solid #FFFAE8; }
+    .list li::after {
+      content: "x";
+      align-self: center;
+      margin-right: 2rem; }
+  .list a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #211C09; }
     .list a::before {
       content: " ";
       width: 1rem;

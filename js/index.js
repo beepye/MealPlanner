@@ -7,15 +7,19 @@
 	// Click event to create the initial list
 	GENERATE_BTN.addEventListener('click', function(ev) {
 		
-		let mealList = [], days = 5; // setting hard days value for now
+		let listContainer = document.querySelectorAll('.content-container')[1],
+				mealList = [], days = 5; // setting hard days value for now
+		// Remove meal list if it exists before creating a new one
+		if(listContainer != undefined) { removeList(); }
 		
 		getMeals(function(response) {
-			let clearBtn = document.querySelector('.js-clear'),
-					regenBtn = document.querySelector('.js-regen');
 			// Add items to meal list
 			response.forEach(function(item, index) { mealList.push(item); });
 			// Create new list based off of the response
 			selectRandomMeals(days, mealList, createListHTML);
+			
+			let clearBtn = document.querySelector('.js-clear'),
+					regenBtn = document.querySelector('.js-regen');
 			// Clear the list - remove from DOM
 			clearBtn.addEventListener('click', removeList);
 			// Clear the list and create another - remove old from DOM
