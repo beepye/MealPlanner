@@ -20,32 +20,43 @@
 				mealList = [], 
 				days = 7, // setting hard days value for now
 				newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
-				
-		count++
+
 		// Remove meal list if it exists already
 		if(listContainer !== undefined) { removeList(); }
 		// Change button messaging
 		GENERATE_BTN.innerHTML = newMessage;
 		// Hahaha
+		count++
 		if(count % 10 === 0) { GENERATE_BTN.innerHTML = `Are you effing serious?`; }
 		// JSON call
 		getMeals(function(response) {
-			// Add items to meal list
+			// Add items to meal array
 			response.forEach(function(item, index) { mealList.push(item); });
-			// Create new list based off of the response
+			// Create new list based off of the response array
 			selectRandomMeals(days, mealList, createListHTML);
 
 			let list = document.querySelector('.js-list'),
-					removeBtn = document.querySelectorAll('.js-remove');
-			// Clear the individual list item
-			list.addEventListener('click', removeListItem);
+					removeBtnArr = document.querySelectorAll('.js-remove'),
+					linkItemArr = document.querySelectorAll('.js-link-item');
+
+			// linkItemArr.forEach(function(item) {
+			// 	let link = item.closest('a')
+			// 	link.addEventListener('click', showDetails);
+			// });
+
+			// Add event listeners to X btns
+			removeBtnArr.forEach(function(item) {
+				let button = item.closest('button');
+				// Remove individual list item
+				button.addEventListener('click', removeListItem);
+			});
 		});
 	});
 
 	// Create XHR request
 	var getMeals = function getMeals(callback) {
 		// Set up JSON data request
-		var	xhr = new XMLHttpRequest();
+		let	xhr = new XMLHttpRequest();
 		xhr.responseType = 'json';
 		xhr.open('GET', URL);
 		// Pass the response in a callback function
@@ -95,6 +106,7 @@
 		
 			// Add props to elems
 			link.innerHTML = item.name;
+			link.className = 'js-link-item'
 			removeBtn.className = 'secondary-btn kill-item-btn js-remove';
 			removeBtn.innerHTML = 'x';
 
@@ -113,13 +125,17 @@
 
 	// Remove individual list item
 	var removeListItem = function removeListItem(e) {
-		let listItem = e.target.closest('li');
+		let listItem = e.target.closest('li');		
 		listItem.remove();
 	}
 	
 	var refreshItem = function refreshItem(arr) {
 		// compare arrays and return unrepeated obj to replace current
 	}
+
+	// var showDetails = function showDetails(e) {
+	// 	let listItem = this.closest('li');
+	// }
 	// 	var myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
 
 }());
