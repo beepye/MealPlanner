@@ -3,14 +3,21 @@
 @import 'normalize';
 @import 'skeleton';
 @import 'partials/vars';
-  
+
+// Set global sizing
 * { box-sizing: border-box; }
 
-body {
-	background-color: $mp-yellow;
-  color: $mp-brown;
-}
+html { font-size: 62.5%; }
 
+body {
+  font-size: 1.6rem; /* allows the use of rems in pixel values i.e. 1.6rem = 16px */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: $mp-brown;
+  background-color: $mp-yellow;
+}
+  
 h1,
 h2 {
   font-size: 2rem;
@@ -24,6 +31,8 @@ main {
 }
 
 fieldset { margin: 0; }
+
+button:focus { outline: 5px solid rgba(77, 51, 25, 0.3); }  
 
 .main-header {
   padding: 2rem 4rem;
@@ -49,10 +58,8 @@ fieldset { margin: 0; }
 
 .list {
   margin: 0;
+  padding: 0;
   list-style: none;
-  border-top: $mp-border-def;
-  border-right: $mp-border-def;
-  border-left: $mp-border-def;
   background-color: $mp-white;
 
   li { 
@@ -114,7 +121,5 @@ fieldset { margin: 0; }
 
 .kill-item-btn {
   width: unset;
-  margin: 0 2rem 0 0;
-  padding: unset;
   border: none;
 }

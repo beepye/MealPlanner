@@ -4,12 +4,10 @@
 	const GENERATE_BTN = document.getElementById('GenerateMealList'),
 		 		URL = 'http://www.thebrianpye.com/Recipes/meals.json',
 				BTN_TEXT = [
-					`Try again`, 
-					`Give it another spin`, 
-					`Keep trying`, 
-					`Don\'t like this one`,
-					`Ew`, 
-					`Gross`
+					`Make it again`,
+					`Nope, try again`, 
+					`Keep on trying`, 
+					`I Don\'t like this`
 				];
 
 	let count = 0;
@@ -17,23 +15,19 @@
 	GENERATE_BTN.addEventListener('click', function(ev) {
 		
 		let listContainer = document.querySelectorAll('.content-container')[1],
-				mealList = [], 
 				days = 7, // setting hard days value for now
 				newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
 
 		// Remove meal list if it exists already
 		if(listContainer !== undefined) { removeList(); }
-		// Change button messaging
+
 		GENERATE_BTN.innerHTML = newMessage;
-		// Hahaha
 		count++
 		if(count % 10 === 0) { GENERATE_BTN.innerHTML = `Are you effing serious?`; }
-		// JSON call
+
 		getMeals(function(response) {
-			// Add items to meal array
-			response.forEach(function(item, index) { mealList.push(item); });
 			// Create new list based off of the response array
-			selectRandomMeals(days, mealList, createListHTML);
+			selectRandomMeals(days, response, createListHTML);
 
 			let list = document.querySelector('.js-list'),
 					removeBtnArr = document.querySelectorAll('.js-remove'),
@@ -54,7 +48,7 @@
 	});
 
 	// Create XHR request
-	var getMeals = function getMeals(callback) {
+	const getMeals = function getMeals(callback) {
 		// Set up JSON data request
 		let	xhr = new XMLHttpRequest();
 		xhr.responseType = 'json';
@@ -65,7 +59,7 @@
 	}
 
 	// Create a randomly generated array from JSON response
-	var selectRandomMeals = function selectRandomMeals(days, arr, callback) {
+	const selectRandomMeals = function selectRandomMeals(days, arr, callback) {
 		// Reorder array in random sequence
 		let randomlyOrderedArray = arr.sort(function() { return .5 - Math.random(); });
 		// Take re-ordered array and only keep as many as needed
@@ -74,7 +68,7 @@
 	}
 
 	// Create HTML list elements and inject into DOM
-	var createListHTML = function createListHTML(arr) {
+	const createListHTML = function createListHTML(arr) {
 		// Create html elems
 		let container = document.createElement('section'),
 				main = document.querySelector('main'),
@@ -95,7 +89,7 @@
 	} 
 	
 	// Create list items from array and inject into DOM
-	var populateList = function populateList(arr) {	
+	const populateList = function populateList(arr) {	
 		let menuList = document.querySelector('ul');
 
 		arr.forEach(function(item) {
@@ -118,24 +112,24 @@
 	}
 
 	// Remove list from DOM
-	var removeList = function removeList() {
+	const removeList = function removeList() {
 		let listContainer = document.querySelectorAll('.content-container')[1];
 		listContainer.remove();
 	}
 
 	// Remove individual list item
-	var removeListItem = function removeListItem(e) {
+	const removeListItem = function removeListItem(e) {
 		let listItem = e.target.closest('li');		
 		listItem.remove();
 	}
 	
-	var refreshItem = function refreshItem(arr) {
+	const refreshItem = function refreshItem(arr) {
 		// compare arrays and return unrepeated obj to replace current
 	}
 
-	// var showDetails = function showDetails(e) {
+	// const showDetails = function showDetails(e) {
 	// 	let listItem = this.closest('li');
 	// }
-	// 	var myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
+	// 	const myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
 
 }());
