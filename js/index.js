@@ -1,135 +1,104 @@
-(function() {
-	'use strict';
+(function () {
+    'use strict';
 
-	const GENERATE_BTN = document.getElementById('GenerateMealList'),
-		 		URL = 'http://www.thebrianpye.com/Recipes/meals.json',
-				BTN_TEXT = [
-					`Make it again`,
-					`Nope, try again`, 
-					`Keep on trying`, 
-					`I Don\'t like this`
-				];
+    const GENERATE_BTN = document.querySelector('#GenerateMealList');
+    const URL = 'http://www.thebrianpye.com/Recipes/meals.json';
+    const BTN_TEXT = [
+        `Make it again`,
+        `Nope, try again`,
+        `Keep on trying`,
+        `I Don't like this` //Template literals preserve whitespace and quotation marks.
+    ];
 
-	let count = 0;
-	// Click event to create the initial list
-	GENERATE_BTN.addEventListener('click', function(ev) {
-		
-		let listContainer = document.querySelectorAll('.content-container')[1],
-				days = 7, // setting hard days value for now
-				newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
+    let count = 0;
+    GENERATE_BTN.addEventListener('click', (ev) => main(ev));
 
-		// Remove meal list if it exists already
-		if(listContainer !== undefined) { removeList(); }
 
-		GENERATE_BTN.innerHTML = newMessage;
-		count++
-		if(count % 10 === 0) { GENERATE_BTN.innerHTML = `Are you effing serious?`; }
+    function main(ev) {
+        const listContainer = document.querySelectorAll('.content-container')[1]; //I tried setting it to query an id, but I kept getting undefined errors for some reason. Leaving it alone for now.
+        const days = 7;
+        const newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
 
-		getMeals(function(response) {
-			// Create new list based off of the response array
-			selectRandomMeals(days, response, createListHTML);
+        if (listContainer !== undefined) {
+            removeList();
+        }
 
-			let list = document.querySelector('.js-list'),
-					removeBtnArr = document.querySelectorAll('.js-remove'),
-					linkItemArr = document.querySelectorAll('.js-link-item');
+        GENERATE_BTN.textContent = newMessage;
+        count++;
+        if (count % 10 === 0) {
+            GENERATE_BTN.textContent = `Are you effing serious?`;
+        }
+        //Replaced the callbacks (which I don't really understand) and XHR with fetch(). 
+        fetch(URL).then(response => response.json()).then(response => createList(response));
 
-			// linkItemArr.forEach(function(item) {
-			// 	let link = item.closest('a')
-			// 	link.addEventListener('click', showDetails);
-			// });
+        function createList(response) {
+            selectRandomMeals(days, response, createListHTML);
+            const list = document.querySelector('.js-list');
+            const removeBtnArr = document.querySelectorAll('.js-remove');
+            const linkItemArr = document.querySelectorAll('.js-link-item');
+            removeBtnArr.forEach((item) => {
+                const button = item.closest('button');
+                button.addEventListener('click', removeListItem);
+            });
+        }
+    }
 
-			// Add event listeners to X btns
-			removeBtnArr.forEach(function(item) {
-				let button = item.closest('button');
-				// Remove individual list item
-				button.addEventListener('click', removeListItem);
-			});
-		});
-	});
 
-	// Create XHR request
-	const getMeals = function getMeals(callback) {
-		// Set up JSON data request
-		let	xhr = new XMLHttpRequest();
-		xhr.responseType = 'json';
-		xhr.open('GET', URL);
-		// Pass the response in a callback function
-		xhr.onload = function() { callback(xhr.response); };
-		xhr.send();
-	}
 
-	// Create a randomly generated array from JSON response
-	const selectRandomMeals = function selectRandomMeals(days, arr, callback) {
-		// Reorder array in random sequence
-		let randomlyOrderedArray = arr.sort(function() { return .5 - Math.random(); });
-		// Take re-ordered array and only keep as many as needed
-		let newArray = randomlyOrderedArray.slice(0, days);
-		callback(newArray);
-	}
+    function selectRandomMeals(days, arr, callback) {
+        const randomlyOrderedArray = arr.sort(() => {
+            return .5 - Math.random();
+        });
+        const newArray = randomlyOrderedArray.slice(0, days);
+        callback(newArray);
+    }
 
-	// Create HTML list elements and inject into DOM
-	const createListHTML = function createListHTML(arr) {
-		// Create html elems
-		let container = document.createElement('section'),
-				main = document.querySelector('main'),
-				list = document.createElement('ul'),
-				btnWrapper = document.createElement('div');
+    function createListHTML(arr) {
+        const container = document.createElement('section');
+        const main = document.querySelector('main');
+        const list = document.createElement('ul');
+        const btnWrapper = document.createElement('div');
 
-		// Add props to elems
-		container.className = 'content-container --no-border';
-		list.className = 'list js-list';
-		btnWrapper.className = 'btn-wrapper';
+        container.className = 'content-container --no-border';
+        list.className = 'list js-list';
+        btnWrapper.className = 'btn-wrapper';
+        main.appendChild(container);
+        container.appendChild(list);
+        container.appendChild(btnWrapper);
 
-		// Build the list
-		main.appendChild(container);
-		container.appendChild(list);
-		container.appendChild(btnWrapper);
+        populateList(arr);
+    }
 
-		populateList(arr);
-	} 
-	
-	// Create list items from array and inject into DOM
-	const populateList = function populateList(arr) {	
-		let menuList = document.querySelector('ul');
+    function populateList(arr) {
+        const menuList = document.querySelector('ul');
 
-		arr.forEach(function(item) {
-			// Create list html elems
-			let	link = document.createElement('a'),
-					linkItem = document.createElement('li'),
-					removeBtn = document.createElement('button');
-		
-			// Add props to elems
-			link.innerHTML = item.name;
-			link.className = 'js-link-item'
-			removeBtn.className = 'secondary-btn kill-item-btn js-remove';
-			removeBtn.innerHTML = 'x';
+        arr.forEach((item) => {
 
-			// Build the list item
-			linkItem.appendChild(link);
-			linkItem.appendChild(removeBtn);
-			menuList.appendChild(linkItem);
-		});
-	}
+            const link = document.createElement('a');
+            const linkItem = document.createElement('li');
+            const removeBtn = document.createElement('button');
 
-	// Remove list from DOM
-	const removeList = function removeList() {
-		let listContainer = document.querySelectorAll('.content-container')[1];
-		listContainer.remove();
-	}
 
-	// Remove individual list item
-	const removeListItem = function removeListItem(e) {
-		let listItem = e.target.closest('li');		
-		listItem.remove();
-	}
-	
-	const refreshItem = function refreshItem(arr) {
-		// compare arrays and return unrepeated obj to replace current
-	}
+            link.textContent = item.name;
+            link.className = 'js-link-item'
+            removeBtn.className = 'secondary-btn kill-item-btn js-remove';
+            removeBtn.textContent = 'x';
 
-	// const showDetails = function showDetails(e) {
-	// 	let listItem = this.closest('li');
-	// }
-	// 	const myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
 
+            linkItem.appendChild(link);
+            linkItem.appendChild(removeBtn);
+            menuList.appendChild(linkItem);
+        });
+    }
+
+    function removeList() {
+        const listContainer = document.querySelectorAll('.content-container')[1];
+        listContainer.remove();
+    }
+
+
+    function removeListItem(e) {
+        const listItem = e.target.closest('li');
+        listItem.remove();
+    }
 }());
