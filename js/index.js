@@ -1,9 +1,9 @@
 (function() {
 	'use strict';
 
-	const GENERATE_BTN = document.getElementById('GenerateMealList');
-	const URL = 'http://www.thebrianpye.com/Recipes/meals.json';
-	const BTN_TEXT = [
+	const genButton = document.getElementById('GenerateMealList');
+	const url = 'http://www.thebrianpye.com/Recipes/meals.json';
+	const btnText = [
 		`Make it again`,
 		`Nope, try again`, 
 		`Keep on trying`, 
@@ -11,20 +11,20 @@
 	];
 
 	// Click event to create the initial list
-	GENERATE_BTN.addEventListener('click', (ev) => XHR_Events(ev)); // unclear about this part (ev) => XHR_Events(ev)
+	genButton.addEventListener('click', (ev) => jsonResponse(ev)); // unclear about this part (ev) => jsonResponse(ev)
 
-	const XHR_Events = function XHR_Events(e) {
+	const jsonResponse = function jsonResponse(e) {
 		
 		const listContainer = document.querySelector('.js-list-container');
 		const days = 7; // setting hard days value for now
-		const newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
+		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
 		// Remove meal list if it exists already
 		if (listContainer !== null) { removeList(); }
 
-		GENERATE_BTN.textContent = newMessage;
-		// GENERATE_BTN.innerHTML = newMessage;
+		genButton.textContent = newMessage;
+		// genButton.innerHTML = newMessage;
 
-		fetch(URL).then(response => response.json())
+		fetch(url).then(response => response.json())
 			.then(response => createList(response));
 
 		function createList(response) {
@@ -49,20 +49,22 @@
 	};
 
 	// Create a randomly generated array from JSON response
-	function selectRandomMeals = function selectRandomMeals(days, arr, callback) {
+	function selectRandomMeals(days, arr, callback) {
 		// Reorder array in random sequence
-		let randomlyOrderedArray = arr.sort(function() { return .5 - Math.random(); });
+		const randomlyOrderedArray = arr.sort(() => { 
+			return .5 - Math.random(); 
+		});
 		// Take re-ordered array and only keep as many as needed
-		let newArray = randomlyOrderedArray.slice(0, days);
+		const newArray = randomlyOrderedArray.slice(0, days);
 		callback(newArray);
 	}
 
 	// Create HTML list elements and inject into DOM
-	function createListHTML = function createListHTML(arr) {
-		let container = document.createElement('section'),
-				main = document.querySelector('main'),
-				list = document.createElement('ul'),
-				btnWrapper = document.createElement('div');
+	function createListHTML(arr) {
+		const container = document.createElement('section');
+		const main = document.querySelector('main');
+		const list = document.createElement('ul');
+		const btnWrapper = document.createElement('div');
 
 		container.className = 'content-container --no-border js-list-container';
 		list.className = 'list js-list';
@@ -76,13 +78,13 @@
 	} 
 	
 	// Create list items from array and inject into DOM
-	function populateList = function populateList(arr) {	
-		let menuList = document.querySelector('ul');
+	function populateList(arr) {	
+		const menuList = document.querySelector('ul');
 
 		arr.forEach(function(item) {
-			let	link = document.createElement('a'),
-					linkItem = document.createElement('li'),
-					removeBtn = document.createElement('button');
+			const link = document.createElement('a');
+			const linkItem = document.createElement('li');
+			const removeBtn = document.createElement('button');
 		
 			link.innerHTML = item.name;
 			link.className = 'js-link-item'
@@ -96,18 +98,18 @@
 	}
 
 	// Remove list from DOM
-	function removeList = function removeList() {
-		let listContainer = document.querySelector('.js-list-container');
+	function removeList() {
+		const listContainer = document.querySelector('.js-list-container');
 		listContainer.remove();
 	}
 
 	// Remove individual list item
-	function removeListItem = function removeListItem(e) {
-		let listItem = e.target.closest('li');		
+	function removeListItem(e) {
+		const listItem = e.target.closest('li');		
 		listItem.remove();
 	}
 	
-	function refreshItem = function refreshItem(arr) {
+	function refreshItem(arr) {
 		// compare arrays and return unrepeated obj to replace current
 	}
 
