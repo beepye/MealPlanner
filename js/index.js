@@ -49,7 +49,7 @@
 	};
 
 	// Create a randomly generated array from JSON response
-	const selectRandomMeals = function selectRandomMeals(days, arr, callback) {
+	function selectRandomMeals = function selectRandomMeals(days, arr, callback) {
 		// Reorder array in random sequence
 		let randomlyOrderedArray = arr.sort(function() { return .5 - Math.random(); });
 		// Take re-ordered array and only keep as many as needed
@@ -58,7 +58,7 @@
 	}
 
 	// Create HTML list elements and inject into DOM
-	const createListHTML = function createListHTML(arr) {
+	function createListHTML = function createListHTML(arr) {
 		let container = document.createElement('section'),
 				main = document.querySelector('main'),
 				list = document.createElement('ul'),
@@ -76,7 +76,7 @@
 	} 
 	
 	// Create list items from array and inject into DOM
-	const populateList = function populateList(arr) {	
+	function populateList = function populateList(arr) {	
 		let menuList = document.querySelector('ul');
 
 		arr.forEach(function(item) {
@@ -96,18 +96,18 @@
 	}
 
 	// Remove list from DOM
-	const removeList = function removeList() {
+	function removeList = function removeList() {
 		let listContainer = document.querySelector('.js-list-container');
 		listContainer.remove();
 	}
 
 	// Remove individual list item
-	const removeListItem = function removeListItem(e) {
+	function removeListItem = function removeListItem(e) {
 		let listItem = e.target.closest('li');		
 		listItem.remove();
 	}
 	
-	const refreshItem = function refreshItem(arr) {
+	function refreshItem = function refreshItem(arr) {
 		// compare arrays and return unrepeated obj to replace current
 	}
 
