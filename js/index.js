@@ -1,37 +1,39 @@
 (function() {
 	'use strict';
 
-	const GENERATE_BTN = document.getElementById('GenerateMealList'),
-		 		URL = 'http://www.thebrianpye.com/Recipes/meals.json',
-				BTN_TEXT = [
-					`Make it again`,
-					`Nope, try again`, 
-					`Keep on trying`, 
-					`I Don\'t like this`
-				];
+	const GENERATE_BTN = document.getElementById('GenerateMealList');
+	const URL = 'http://www.thebrianpye.com/Recipes/meals.json';
+	const BTN_TEXT = [
+		`Make it again`,
+		`Nope, try again`, 
+		`Keep on trying`, 
+		`I Don't like this`
+	];
 
-	let count = 0;
 	// Click event to create the initial list
-	GENERATE_BTN.addEventListener('click', function(ev) {
+	GENERATE_BTN.addEventListener('click', (ev) => XHR_Events(ev)); // unclear about this part (ev) => XHR_Events(ev)
+
+	const XHR_Events = function XHR_Events(e) {
 		
-		let listContainer = document.querySelectorAll('.content-container')[1],
-				days = 7, // setting hard days value for now
-				newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
-
+		const listContainer = document.querySelector('.js-list-container');
+		const days = 7; // setting hard days value for now
+		const newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
 		// Remove meal list if it exists already
-		if(listContainer !== undefined) { removeList(); }
+		if (listContainer !== null) { removeList(); }
 
-		GENERATE_BTN.innerHTML = newMessage;
-		count++
-		if(count % 10 === 0) { GENERATE_BTN.innerHTML = `Are you effing serious?`; }
+		GENERATE_BTN.textContent = newMessage;
+		// GENERATE_BTN.innerHTML = newMessage;
 
-		getMeals(function(response) {
+		fetch(URL).then(response => response.json())
+			.then(response => createList(response));
+
+		function createList(response) {
 			// Create new list based off of the response array
 			selectRandomMeals(days, response, createListHTML);
 
-			let list = document.querySelector('.js-list'),
-					removeBtnArr = document.querySelectorAll('.js-remove'),
-					linkItemArr = document.querySelectorAll('.js-link-item');
+			const list = document.querySelector('.js-list');
+			const removeBtnArr = document.querySelectorAll('.js-remove');
+			const linkItemArr = document.querySelectorAll('.js-link-item');
 
 			// linkItemArr.forEach(function(item) {
 			// 	let link = item.closest('a')
@@ -39,24 +41,12 @@
 			// });
 
 			// Add event listeners to X btns
-			removeBtnArr.forEach(function(item) {
-				let button = item.closest('button');
-				// Remove individual list item
+			removeBtnArr.forEach((item) => {
+				const button = item.closest('button');
 				button.addEventListener('click', removeListItem);
 			});
-		});
-	});
-
-	// Create XHR request
-	const getMeals = function getMeals(callback) {
-		// Set up JSON data request
-		let	xhr = new XMLHttpRequest();
-		xhr.responseType = 'json';
-		xhr.open('GET', URL);
-		// Pass the response in a callback function
-		xhr.onload = function() { callback(xhr.response); };
-		xhr.send();
-	}
+		}
+	};
 
 	// Create a randomly generated array from JSON response
 	const selectRandomMeals = function selectRandomMeals(days, arr, callback) {
@@ -69,18 +59,15 @@
 
 	// Create HTML list elements and inject into DOM
 	const createListHTML = function createListHTML(arr) {
-		// Create html elems
 		let container = document.createElement('section'),
 				main = document.querySelector('main'),
 				list = document.createElement('ul'),
 				btnWrapper = document.createElement('div');
 
-		// Add props to elems
-		container.className = 'content-container --no-border';
+		container.className = 'content-container --no-border js-list-container';
 		list.className = 'list js-list';
 		btnWrapper.className = 'btn-wrapper';
 
-		// Build the list
 		main.appendChild(container);
 		container.appendChild(list);
 		container.appendChild(btnWrapper);
@@ -93,18 +80,15 @@
 		let menuList = document.querySelector('ul');
 
 		arr.forEach(function(item) {
-			// Create list html elems
 			let	link = document.createElement('a'),
 					linkItem = document.createElement('li'),
 					removeBtn = document.createElement('button');
 		
-			// Add props to elems
 			link.innerHTML = item.name;
 			link.className = 'js-link-item'
 			removeBtn.className = 'secondary-btn kill-item-btn js-remove';
 			removeBtn.innerHTML = 'x';
 
-			// Build the list item
 			linkItem.appendChild(link);
 			linkItem.appendChild(removeBtn);
 			menuList.appendChild(linkItem);
@@ -113,7 +97,7 @@
 
 	// Remove list from DOM
 	const removeList = function removeList() {
-		let listContainer = document.querySelectorAll('.content-container')[1];
+		let listContainer = document.querySelector('.js-list-container');
 		listContainer.remove();
 	}
 
