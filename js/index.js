@@ -1,37 +1,38 @@
 (function() {
 	'use strict';
 
-	const GENERATE_BTN = document.getElementById('GenerateMealList'),
-		 		URL = 'http://www.thebrianpye.com/Recipes/meals.json',
-				BTN_TEXT = [
-					`Make it again`,
-					`Nope, try again`, 
-					`Keep on trying`, 
-					`I Don\'t like this`
-				];
+	const genMenuBtn = document.getElementById('GenerateMealList');
+	const url = 'http://www.thebrianpye.com/Recipes/meals.json';
+	const days = 7; // setting hard days value for now
+	const btnText = [
+		`Make it again`,
+		`Nope, try again`, 
+		`Keep on trying`, 
+		`I Don't like this`
+	];
 
-	let count = 0;
-	// Click event to create the initial list
-	GENERATE_BTN.addEventListener('click', function(ev) {
-		
-		let listContainer = document.querySelectorAll('.content-container')[1],
-				days = 7, // setting hard days value for now
-				newMessage = BTN_TEXT[Math.floor(Math.random() * BTN_TEXT.length)];
+	// Click event to create the menu item list
+	genMenuBtn.addEventListener('click', jsonResponse);
 
+	function jsonResponse(e) {
+		const listContainer = document.querySelector('.js-list-container');
+		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
 		// Remove meal list if it exists already
-		if(listContainer !== undefined) { removeList(); }
+		listContainer ? removeList() : undefined;
+		// Which of the following is more appropriate: textContent or innerHTML?
+		genMenuBtn.innerHTML = newMessage; /* genMenuBtn.textContent = newMessage; */
 
-		GENERATE_BTN.innerHTML = newMessage;
-		count++
-		if(count % 10 === 0) { GENERATE_BTN.innerHTML = `Are you effing serious?`; }
+		fetch(url).then(response => response.json())
+			.then(response => createList(response));
+	};
 
-		getMeals(function(response) {
+	function createList(response) {
 			// Create new list based off of the response array
 			selectRandomMeals(days, response, createListHTML);
 
-			let list = document.querySelector('.js-list'),
-					removeBtnArr = document.querySelectorAll('.js-remove'),
-					linkItemArr = document.querySelectorAll('.js-link-item');
+			const list = document.querySelector('.js-list');
+			const removeBtnArr = document.querySelectorAll('.js-remove');
+			const linkItemArr = document.querySelectorAll('.js-link-item');
 
 			// linkItemArr.forEach(function(item) {
 			// 	let link = item.closest('a')
@@ -39,48 +40,31 @@
 			// });
 
 			// Add event listeners to X btns
-			removeBtnArr.forEach(function(item) {
-				let button = item.closest('button');
-				// Remove individual list item
+			removeBtnArr.forEach((item) => {
+				const button = item.closest('button');
 				button.addEventListener('click', removeListItem);
 			});
-		});
-	});
-
-	// Create XHR request
-	const getMeals = function getMeals(callback) {
-		// Set up JSON data request
-		let	xhr = new XMLHttpRequest();
-		xhr.responseType = 'json';
-		xhr.open('GET', URL);
-		// Pass the response in a callback function
-		xhr.onload = function() { callback(xhr.response); };
-		xhr.send();
-	}
+		}
 
 	// Create a randomly generated array from JSON response
-	const selectRandomMeals = function selectRandomMeals(days, arr, callback) {
-		// Reorder array in random sequence
-		let randomlyOrderedArray = arr.sort(function() { return .5 - Math.random(); });
-		// Take re-ordered array and only keep as many as needed
-		let newArray = randomlyOrderedArray.slice(0, days);
+	function selectRandomMeals(days, arr, callback) {
+		const randomlyOrderedArray = arr.sort(() => { return .5 - Math.random(); });
+		const newArray = randomlyOrderedArray.slice(0, days);
+
 		callback(newArray);
 	}
 
 	// Create HTML list elements and inject into DOM
-	const createListHTML = function createListHTML(arr) {
-		// Create html elems
-		let container = document.createElement('section'),
-				main = document.querySelector('main'),
-				list = document.createElement('ul'),
-				btnWrapper = document.createElement('div');
+	function createListHTML(arr) {
+		const container = document.createElement('section');
+		const main = document.querySelector('main');
+		const list = document.createElement('ul');
+		const btnWrapper = document.createElement('div');
 
-		// Add props to elems
-		container.className = 'content-container --no-border';
+		container.className = 'content-container --no-border js-list-container';
 		list.className = 'list js-list';
 		btnWrapper.className = 'btn-wrapper';
 
-		// Build the list
 		main.appendChild(container);
 		container.appendChild(list);
 		container.appendChild(btnWrapper);
@@ -89,22 +73,19 @@
 	} 
 	
 	// Create list items from array and inject into DOM
-	const populateList = function populateList(arr) {	
-		let menuList = document.querySelector('ul');
+	function populateList(arr) {	
+		const menuList = document.querySelector('ul');
 
 		arr.forEach(function(item) {
-			// Create list html elems
-			let	link = document.createElement('a'),
-					linkItem = document.createElement('li'),
-					removeBtn = document.createElement('button');
+			const link = document.createElement('a');
+			const linkItem = document.createElement('li');
+			const removeBtn = document.createElement('button');
 		
-			// Add props to elems
 			link.innerHTML = item.name;
 			link.className = 'js-link-item'
 			removeBtn.className = 'secondary-btn kill-item-btn js-remove';
 			removeBtn.innerHTML = 'x';
 
-			// Build the list item
 			linkItem.appendChild(link);
 			linkItem.appendChild(removeBtn);
 			menuList.appendChild(linkItem);
@@ -112,18 +93,18 @@
 	}
 
 	// Remove list from DOM
-	const removeList = function removeList() {
-		let listContainer = document.querySelectorAll('.content-container')[1];
+	function removeList() {
+		const listContainer = document.querySelector('.js-list-container');
 		listContainer.remove();
 	}
 
 	// Remove individual list item
-	const removeListItem = function removeListItem(e) {
-		let listItem = e.target.closest('li');		
+	function removeListItem(e) {
+		const listItem = e.target.closest('li');		
 		listItem.remove();
 	}
 	
-	const refreshItem = function refreshItem(arr) {
+	function refreshItem(arr) {
 		// compare arrays and return unrepeated obj to replace current
 	}
 

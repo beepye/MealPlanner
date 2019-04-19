@@ -457,7 +457,7 @@ fieldset {
   margin: 0; }
 
 button:focus {
-  outline: 5px solid rgba(77, 51, 25, 0.3); }
+  outline: 3px solid rgba(77, 51, 25, 0.25); }
 
 .main-header {
   padding: 2rem 4rem;
