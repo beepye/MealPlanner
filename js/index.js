@@ -1,8 +1,9 @@
 (function() {
 	'use strict';
 
-	const genButton = document.getElementById('GenerateMealList');
+	const genMenuBtn = document.getElementById('GenerateMealList');
 	const url = 'http://www.thebrianpye.com/Recipes/meals.json';
+	const days = 7; // setting hard days value for now
 	const btnText = [
 		`Make it again`,
 		`Nope, try again`, 
@@ -10,24 +11,22 @@
 		`I Don't like this`
 	];
 
-	// Click event to create the initial list
-	genButton.addEventListener('click', (ev) => jsonResponse(ev)); // unclear about this part (ev) => jsonResponse(ev)
+	// Click event to create the menu item list
+	genMenuBtn.addEventListener('click', jsonResponse);
 
-	const jsonResponse = function jsonResponse(e) {
-		
+	function jsonResponse(e) {
 		const listContainer = document.querySelector('.js-list-container');
-		const days = 7; // setting hard days value for now
 		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
 		// Remove meal list if it exists already
-		if (listContainer !== null) { removeList(); }
-
-		genButton.textContent = newMessage;
-		// genButton.innerHTML = newMessage;
+		listContainer ? removeList() : undefined;
+		// Which of the following is more appropriate: textContent or innerHTML?
+		genMenuBtn.innerHTML = newMessage; /* genMenuBtn.textContent = newMessage; */
 
 		fetch(url).then(response => response.json())
 			.then(response => createList(response));
+	};
 
-		function createList(response) {
+	function createList(response) {
 			// Create new list based off of the response array
 			selectRandomMeals(days, response, createListHTML);
 
@@ -46,16 +45,12 @@
 				button.addEventListener('click', removeListItem);
 			});
 		}
-	};
 
 	// Create a randomly generated array from JSON response
 	function selectRandomMeals(days, arr, callback) {
-		// Reorder array in random sequence
-		const randomlyOrderedArray = arr.sort(() => { 
-			return .5 - Math.random(); 
-		});
-		// Take re-ordered array and only keep as many as needed
+		const randomlyOrderedArray = arr.sort(() => { return .5 - Math.random(); });
 		const newArray = randomlyOrderedArray.slice(0, days);
+
 		callback(newArray);
 	}
 
