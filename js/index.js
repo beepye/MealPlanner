@@ -13,6 +13,7 @@
 
 	// Click event to create the menu item list
 	genMenuBtn.addEventListener('click', jsonResponse);
+  
 	function jsonResponse(e) {
 		const listContainer = document.querySelector('.js-list-container');
 		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
@@ -114,5 +115,4 @@
 	// 	let listItem = this.closest('li');
 	// }
 	// 	const myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
-
 }());
