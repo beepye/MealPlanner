@@ -13,7 +13,6 @@
 
 	// Click event to create the menu item list
 	genMenuBtn.addEventListener('click', jsonResponse);
-
 	function jsonResponse(e) {
 		const listContainer = document.querySelector('.js-list-container');
 		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
@@ -23,17 +22,15 @@
 		genMenuBtn.innerHTML = newMessage; /* genMenuBtn.textContent = newMessage; */
 
 		fetch(url).then(response => response.json())
-			.then(response => createList(response));
+			.then(response => createMenu(response));
 	};
 
-	function createList(response) {
+	function createMenu(response) {
 			// Create new list based off of the response array
 			selectRandomMeals(days, response, createListHTML);
 
-			const list = document.querySelector('.js-list');
-			const removeBtnArr = document.querySelectorAll('.js-remove');
-			const linkItemArr = document.querySelectorAll('.js-link-item');
-
+			const removeBtnArr = document.querySelectorAll('.js-btn--remove');
+			const	clearBtn = document.querySelector('js-btn--clear')
 			// linkItemArr.forEach(function(item) {
 			// 	let link = item.closest('a')
 			// 	link.addEventListener('click', showDetails);
@@ -60,14 +57,19 @@
 		const main = document.querySelector('main');
 		const list = document.createElement('ul');
 		const btnWrapper = document.createElement('div');
+		const clearBtn = document.createElement('button');
 
 		container.className = 'content-container --no-border js-list-container';
 		list.className = 'list js-list';
 		btnWrapper.className = 'btn-wrapper';
+		clearBtn.className = 'secondary-btn --link js-btn--clear';
+		clearBtn.innerHTML = 'Clear list';
 
 		main.appendChild(container);
 		container.appendChild(list);
 		container.appendChild(btnWrapper);
+		btnWrapper.appendChild(clearBtn);
+		clearBtn.addEventListener('click', removeList);
 
 		populateList(arr);
 	} 
@@ -83,7 +85,7 @@
 		
 			link.innerHTML = item.name;
 			link.className = 'js-link-item'
-			removeBtn.className = 'secondary-btn kill-item-btn js-remove';
+			removeBtn.className = 'secondary-btn kill-item-btn js-btn--remove';
 			removeBtn.innerHTML = 'x';
 
 			linkItem.appendChild(link);
