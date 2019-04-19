@@ -11,13 +11,14 @@
 		`I Don't like this`
 	];
 
-	// Click event to create the menu item list
+	// Click event to create the menu list
 	genMenuBtn.addEventListener('click', jsonResponse);
-  
+
+	// Make call to external json file
 	function jsonResponse(e) {
 		const listContainer = document.querySelector('.js-list-container');
 		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
-		// Remove meal list if it exists already
+		
 		listContainer ? removeList() : undefined;
 		// Which of the following is more appropriate: textContent or innerHTML?
 		genMenuBtn.innerHTML = newMessage; /* genMenuBtn.textContent = newMessage; */
@@ -26,8 +27,8 @@
 			.then(response => createMenu(response));
 	};
 
+	// Build and inject menu based on fetch() response
 	function createMenu(response) {
-			// Create new list based off of the response array
 			selectRandomMeals(days, response, createListHTML);
 
 			const removeBtnArr = document.querySelectorAll('.js-btn--remove');
@@ -44,7 +45,7 @@
 			});
 		}
 
-	// Create a randomly generated array from JSON response
+	// Create a randomly generated array from fetch() response
 	function selectRandomMeals(days, arr, callback) {
 		const randomlyOrderedArray = arr.sort(() => { return .5 - Math.random(); });
 		const newArray = randomlyOrderedArray.slice(0, days);
@@ -52,7 +53,7 @@
 		callback(newArray);
 	}
 
-	// Create HTML list elements and inject into DOM
+	// Create HTML elements and inject into DOM
 	function createListHTML(arr) {
 		const container = document.createElement('section');
 		const main = document.querySelector('main');
@@ -75,7 +76,7 @@
 		populateList(arr);
 	} 
 	
-	// Create list items from array and inject into DOM
+	// Create HTML list items from array and inject into DOM
 	function populateList(arr) {	
 		const menuList = document.querySelector('ul');
 
@@ -95,18 +96,19 @@
 		});
 	}
 
-	// Remove list from DOM
+	// Remove menu from DOM
 	function removeList() {
 		const listContainer = document.querySelector('.js-list-container');
 		listContainer.remove();
 	}
 
-	// Remove individual list item
+	// Remove individual menu item
 	function removeListItem(e) {
 		const listItem = e.target.closest('li');		
 		listItem.remove();
 	}
 	
+	// Refresh individual menu item
 	function refreshItem(arr) {
 		// compare arrays and return unrepeated obj to replace current
 	}
@@ -115,4 +117,5 @@
 	// 	let listItem = this.closest('li');
 	// }
 	// 	const myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
+
 }());
