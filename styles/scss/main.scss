@@ -23,23 +23,30 @@ h2 {
   font-size: 2rem;
   letter-spacing: 0;
   font-weight: 600;
+
+  > span { font-weight: 400; }
 }
 
 main {
-  max-width: 75rem;
+  max-width: 55rem;
   margin: 0 auto;
 }
 
 fieldset { margin: 0; }
 
-button:focus { outline: 3px solid rgba(77, 51, 25, 0.25); }  
+button:focus,
+select:focus { outline: 3px solid rgba(77, 51, 25, 0.25); }  
 
 .main-header {
-  padding: 2rem 4rem;
+  padding: 2rem;
   background-color: $mp-pale-yellow;
   box-shadow: $mp-box-shadow;
 
-  h1 { margin-bottom: 0; }
+  span { 
+    margin-bottom: 0;
+    font-size: 2rem; 
+    font-weight: 700;
+  }
 }
 
 .content-container {
@@ -96,8 +103,6 @@ button:focus { outline: 3px solid rgba(77, 51, 25, 0.25); }
   }
 }
 
-.btn-wrapper { display: flex; }
-
 .primary-btn { 
   margin-bottom: 0;
   background-color: $mp-pale-yellow;
@@ -108,7 +113,6 @@ button:focus { outline: 3px solid rgba(77, 51, 25, 0.25); }
 }
 
 .secondary-btn {
-  width: 100%;
 
   &.--link {
     margin: 0;
@@ -119,7 +123,16 @@ button:focus { outline: 3px solid rgba(77, 51, 25, 0.25); }
   }
 }
 
-.kill-item-btn {
-  width: unset;
-  border: none;
+.controls-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  label { margin: 0 1.6rem 1.6rem 0; }
+
+  select { 
+    width: 6rem;
+    height: 4rem;
+    margin-bottom: 2rem; 
+  }
 }

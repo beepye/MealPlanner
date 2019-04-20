@@ -3,14 +3,12 @@
 
 	const genMenuBtn = document.getElementById('GenerateMealList');
 	const url = 'http://www.thebrianpye.com/Recipes/meals.json';
-	const days = 7; // setting hard days value for now
 	const btnText = [
 		`Make it again`,
 		`Nope, try again`, 
 		`Keep on trying`, 
 		`I Don't like this`
 	];
-
 	// Click event to create the menu list
 	genMenuBtn.addEventListener('click', jsonResponse);
 
@@ -29,10 +27,12 @@
 
 	// Build and inject menu based on fetch() response
 	function createMenu(response) {
-			selectRandomMeals(days, response, createListHTML);
+			const days = document.getElementById('dayOptions').value;
+			selectRandomMeals(response, days, createListHTML);
 
 			const removeBtnArr = document.querySelectorAll('.js-btn--remove');
-			const	clearBtn = document.querySelector('js-btn--clear')
+			const	clearBtn = document.querySelector('js-btn--clear');
+
 			// linkItemArr.forEach(function(item) {
 			// 	let link = item.closest('a')
 			// 	link.addEventListener('click', showDetails);
@@ -46,11 +46,11 @@
 		}
 
 	// Create a randomly generated array from fetch() response
-	function selectRandomMeals(days, arr, callback) {
+	function selectRandomMeals(arr, days, makeMenu) {
 		const randomlyOrderedArray = arr.sort(() => { return .5 - Math.random(); });
 		const newArray = randomlyOrderedArray.slice(0, days);
 
-		callback(newArray);
+		makeMenu(newArray);
 	}
 
 	// Create HTML elements and inject into DOM
@@ -87,7 +87,7 @@
 		
 			link.innerHTML = item.name;
 			link.className = 'js-link-item'
-			removeBtn.className = 'secondary-btn kill-item-btn js-btn--remove';
+			removeBtn.className = 'secondary-btn --link js-btn--remove';
 			removeBtn.innerHTML = 'x';
 
 			linkItem.appendChild(link);

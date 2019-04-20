@@ -10,8 +10,6 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
   <link rel="stylesheet" href="styles/main.css">
-
-  <meta name="theme-color" content="#fafafa">
 </head>
 
 <body>
@@ -19,14 +17,27 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
   <header class="main-header">
-    <h1>MealPlanner</h1>  
+    <span>MealPlanner</span>  
   </header>
 
   <main>
     <section class="content-container">
-      <h2>Hey! Need a meal menu this week?</h2>
-      <p>We can help. Just click the friendly button below for a randomly generated list of meals.</p>
-      <button id="GenerateMealList" class="primary-btn" name="generate_meal_list" value="primary" >Make My Menu</button>
+      <h1>Need a meal menu this week?&nbsp;<span>We can help!</span></h1>
+      
+      <div class="controls-wrapper">
+          <label for="dayOptions">How many days do you need planned?</label>
+          <select id="dayOptions" autofocus="true" required="true">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+        </div>
+
+        <button id="GenerateMealList" class="primary-btn" name="generate_meal_list" value="primary" >Make My Menu</button>
     </section>
   </main>
   
