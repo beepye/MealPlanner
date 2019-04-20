@@ -448,23 +448,29 @@ h2 {
   font-size: 2rem;
   letter-spacing: 0;
   font-weight: 600; }
+  h1 > span,
+  h2 > span {
+    font-weight: 400; }
 
 main {
-  max-width: 75rem;
+  max-width: 55rem;
   margin: 0 auto; }
 
 fieldset {
   margin: 0; }
 
-button:focus {
+button:focus,
+select:focus {
   outline: 3px solid rgba(77, 51, 25, 0.25); }
 
 .main-header {
-  padding: 2rem 4rem;
+  padding: 2rem;
   background-color: #FFE680;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
-  .main-header h1 {
-    margin-bottom: 0; }
+  .main-header span {
+    margin-bottom: 0;
+    font-size: 2rem;
+    font-weight: 700; }
 
 .content-container {
   display: flex;
@@ -508,9 +514,6 @@ button:focus {
       border-radius: 50%;
       background-color: #FFE680; }
 
-.btn-wrapper {
-  display: flex; }
-
 .primary-btn {
   margin-bottom: 0;
   background-color: #FFE680;
@@ -519,15 +522,20 @@ button:focus {
   .primary-btn:hover {
     border-color: #FFFAE8; }
 
-.secondary-btn {
-  width: 100%; }
-  .secondary-btn.--link {
-    margin: 0;
-    border: none;
-    background-color: transparent; }
-    .secondary-btn.--link:hover {
-      text-decoration: underline; }
+.secondary-btn.--link {
+  margin: 0;
+  border: none;
+  background-color: transparent; }
+  .secondary-btn.--link:hover {
+    text-decoration: underline; }
 
-.kill-item-btn {
-  width: unset;
-  border: none; }
+.controls-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .controls-wrapper label {
+    margin: 0 1.6rem 1.6rem 0; }
+  .controls-wrapper select {
+    width: 6rem;
+    height: 4rem;
+    margin-bottom: 2rem; }
