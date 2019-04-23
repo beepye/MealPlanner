@@ -18,8 +18,7 @@
 		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
 		
 		listContainer ? removeList() : undefined;
-		// Which of the following is more appropriate: textContent or innerHTML?
-		genMenuBtn.innerHTML = newMessage; /* genMenuBtn.textContent = newMessage; */
+		genMenuBtn.textContent = newMessage;
 
 		fetch(url).then(response => response.json())
 			.then(response => createMenu(response));
@@ -39,7 +38,7 @@
 			// });
 
 			// Add event listeners to X btns
-			removeBtnArr.forEach((item) => {
+			removeBtnArr.forEach(item => {
 				const button = item.closest('button');
 				button.addEventListener('click', removeListItem);
 			});

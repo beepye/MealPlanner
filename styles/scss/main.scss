@@ -1,8 +1,6 @@
 /* Planning to experiment with CSS Grid for layout */
 
-@import 'normalize';
-@import 'skeleton';
-@import 'partials/vars';
+@import 'normalize'; @import 'skeleton'; @import 'partials/vars';
 
 // Set global sizing
 * { box-sizing: border-box; }
