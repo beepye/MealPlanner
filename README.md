@@ -19,6 +19,6 @@ I'm sure there's more.
 
 #### Local CLI commands:
 - `npm run build`: compiles and builds index.js into dist/main.js
-- `npm run watch`: watches for index.js changes and auto reloads main.js
-- `npm run scss`: compile sass to css
-- `npm run server`: launch local webpack server
+- `npm run watch-js`: watches for index.js changes and auto reloads main.js
+- `npm run styles`: compile sass to css
+- `npm run start-server`: launch local webpack server
