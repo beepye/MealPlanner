@@ -32,19 +32,10 @@
 			const days = document.getElementById('dayOptions').value;
 			selectRandomMeals(response, days, createListHTML);
 
-			const removeBtnArr = document.querySelectorAll('.js-btn--remove');
-			const	clearBtn = document.querySelector('js-btn--clear');
-
 			// linkItemArr.forEach(function(item) {
 			// 	let link = item.closest('a')
 			// 	link.addEventListener('click', showDetails);
 			// });
-
-			// Add event listeners to X btns
-			removeBtnArr.forEach(item => {
-				const button = item.closest('button');
-				button.addEventListener('click', removeListItem);
-			});
 		}
 
 	// Create a randomly generated array from fetch() response
@@ -91,6 +82,8 @@
 			link.className = 'js-link-item'
 			removeBtn.className = 'secondary-btn --link js-btn--remove';
 			removeBtn.innerHTML = 'x';
+			// Add event listeners to X btns
+			removeBtn.addEventListener('click', removeListItem);
 
 			linkItem.appendChild(link);
 			linkItem.appendChild(removeBtn);
