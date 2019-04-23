@@ -3,6 +3,7 @@
 
 	const genMenuBtn = document.getElementById('GenerateMealList');
 	const url = 'http://www.thebrianpye.com/Recipes/meals.json';
+	const origMessage = genMenuBtn.textContent;
 	const btnText = [
 		`Make it again`,
 		`Nope, try again`, 
@@ -10,19 +11,20 @@
 		`I Don't like this`
 	];
 	// Click event to create the menu list
-	genMenuBtn.addEventListener('click', jsonResponse);
+	genMenuBtn.addEventListener('click', getJSON);
 
 	// Make call to external json file
-	function jsonResponse(e) {
+	function getJSON(e) {
 		const listContainer = document.querySelector('.js-list-container');
 		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
 		
 		listContainer ? removeList() : undefined;
-		// Which of the following is more appropriate: textContent or innerHTML?
-		genMenuBtn.innerHTML = newMessage; /* genMenuBtn.textContent = newMessage; */
+		genMenuBtn.textContent = newMessage;
 
-		fetch(url).then(response => response.json())
-			.then(response => createMenu(response));
+		fetch(url)
+			.then(response => response.json())
+			.then(response => createMenu(response))
+			.catch(err => console.log(err)); 
 	};
 
 	// Build and inject menu based on fetch() response
@@ -39,7 +41,7 @@
 			// });
 
 			// Add event listeners to X btns
-			removeBtnArr.forEach((item) => {
+			removeBtnArr.forEach(item => {
 				const button = item.closest('button');
 				button.addEventListener('click', removeListItem);
 			});
@@ -78,7 +80,7 @@
 	
 	// Create HTML list items from array and inject into DOM
 	function populateList(arr) {	
-		const menuList = document.querySelector('ul');
+		const menuList = document.querySelector('.js-list');
 
 		arr.forEach(function(item) {
 			const link = document.createElement('a');
@@ -100,6 +102,7 @@
 	function removeList() {
 		const listContainer = document.querySelector('.js-list-container');
 		listContainer.remove();
+		genMenuBtn.textContent = origMessage;
 	}
 
 	// Remove individual menu item
