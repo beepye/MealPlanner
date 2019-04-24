@@ -12,12 +12,8 @@
 	];
 	// Click event to create the menu list
 	genMenuBtn.addEventListener('click', () => {
-		const listContainer = document.querySelector('.js-list-container');
-		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
-		
-		listContainer ? removeList() : undefined;
-		genMenuBtn.textContent = newMessage;
-		
+		document.querySelector('.js-list-container') ? removeList() : undefined;
+
 		getMeals();		
 	});
 
@@ -29,22 +25,13 @@
 			.catch(err => errorLog(err)); 
 	};
 
-	function errorLog(err) {
-		console.log(`Something went wrong:\n${err}`);
-		// inject error warning into UI
-		// telling user to try again
-	}
-
 	// Build and inject menu based on fetch() response
 	function createMenu(response) {
-			const days = document.getElementById('dayOptions').value;
-			selectRandomMeals(response, days, createListHTML);
+		const days = document.getElementById('dayOptions').value;
 
-			// linkItemArr.forEach(function(item) {
-			// 	let link = item.closest('a')
-			// 	link.addEventListener('click', showDetails);
-			// });
-		}
+		selectRandomMeals(response, days, createListHTML);
+		genMenuBtn.textContent = btnText[Math.floor(Math.random() * btnText.length)];
+	}
 
 	// Create a randomly generated array from fetch() response
 	function selectRandomMeals(arr, days, makeMenu) {
@@ -91,6 +78,7 @@
 			removeBtn.className = 'secondary-btn --link js-btn--remove';
 			removeBtn.innerHTML = 'x';
 			removeBtn.addEventListener('click', removeListItem);
+			// link.addEventListener('click', showDetails);
 
 			linkItem.appendChild(link);
 			linkItem.appendChild(removeBtn);
@@ -114,6 +102,12 @@
 	// Refresh individual menu item
 	function refreshItem(arr) {
 		// compare arrays and return unrepeated obj to replace current
+	}
+
+	function errorLog(err) {
+		console.log(`Something went wrong:\n${err}`);
+		// inject error warning into UI
+		// telling user to try again
 	}
 
 	// const showDetails = function showDetails(e) {
