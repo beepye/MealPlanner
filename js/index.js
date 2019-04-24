@@ -11,21 +11,29 @@
 		`I Don't like this`
 	];
 	// Click event to create the menu list
-	genMenuBtn.addEventListener('click', getJSON);
-
-	// Make call to external json file
-	function getJSON(e) {
+	genMenuBtn.addEventListener('click', () => {
 		const listContainer = document.querySelector('.js-list-container');
 		const newMessage = btnText[Math.floor(Math.random() * btnText.length)];
 		
 		listContainer ? removeList() : undefined;
 		genMenuBtn.textContent = newMessage;
+		
+		getMeals();		
+	});
 
+	// Make call to external json file
+	function getMeals(e) {
 		fetch(url)
 			.then(response => response.json())
 			.then(response => createMenu(response))
-			.catch(err => console.log(err)); 
+			.catch(err => errorLog(err)); 
 	};
+
+	function errorLog(err) {
+		console.log(`Something went wrong:\n${err}`);
+		// inject error warning into UI
+		// telling user to try again
+	}
 
 	// Build and inject menu based on fetch() response
 	function createMenu(response) {
@@ -79,10 +87,9 @@
 			const removeBtn = document.createElement('button');
 		
 			link.innerHTML = item.name;
-			link.className = 'js-link-item'
+			link.className = 'js-link-item';
 			removeBtn.className = 'secondary-btn --link js-btn--remove';
 			removeBtn.innerHTML = 'x';
-			// Add event listeners to X btns
 			removeBtn.addEventListener('click', removeListItem);
 
 			linkItem.appendChild(link);
@@ -112,6 +119,7 @@
 	// const showDetails = function showDetails(e) {
 	// 	let listItem = this.closest('li');
 	// }
-	// 	const myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
+
+	// const myMeals = Meals.filter(function(whom){ return whom.owner === 'Brian'}).map(function(whom){ return whom.name; });
 
 }());
